@@ -77,8 +77,54 @@
         reserved.
     </footer>
 </div>
-
+<script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{ mix('js/app.js') }}" defer></script>
+<script src="{{ asset('js/datatables.min.js') }}" defer></script>
+<script src="{{ asset('js/pdfmake.min.js') }}" defer></script>
+<script src="{{ asset('js/vfs_fonts.js') }}" defer></script>
+<script>
+$(function(){
+    //Datatable
+$("#dataTable").DataTable({
+    dom: 'Bfrtip',
+    buttons: [
+        {
+            extend: 'excelHtml5',
+            text: 'Excel'
+        },
+        {
+            extend: 'pdfHtml5',
+            text: 'PDF',
+        }
+    ],
+        language: {
+            processing: "Búsqueda en curso...",
+            search: "Buscar:",
+            lengthMenu: "Mostrar _MENU_ Elementos",
+            info: "Mostrando _START_ de _END_ de un total de _TOTAL_ elementos",
+            infoEmpty: "Visualizando 0 de 0 de un total de 0 elementos",
+            infoFiltered: "(Filtrado de _MAX_ elementos en total)",
+            infoPostFix: "",
+            loadingRecords: "Carga de datos en proceso..",
+            zeroRecords: "Elementos no encontrados",
+            emptyTable: "La tabla no contiene datos",
+            paginate: {
+                first: "Primero",
+                previous: "Anterior",
+                next: "siguiente",
+                last: "Último"
+            },
+        },
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": false,
+        "info": true,
+        "autoWidth": false,
+        "destroy":true
+    });
+});
+</script>
 
 @yield('third_party_scripts')
 
