@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use App\Category;
 
 class UserSeeder extends Seeder
 {
@@ -17,6 +18,7 @@ class UserSeeder extends Seeder
           $user_admin2 = User::create([
             'name' => 'Super admin',
             'email' => 'mariokr.rocker@gmail.com',
+            'username' => 'superadmin',
             'phone' => '+50372035869',
             'password' => Hash::make('awesome'),
             'role_id' => 1
@@ -26,6 +28,7 @@ class UserSeeder extends Seeder
           $user1 = User::create([
             'name' => 'Administrador',
             'email' => 'dya_re@hotmail.com',
+            'username' => 'administrador',
             'phone' => '+50372035861',
             'password' => Hash::make('awesome'),
             'role_id' => 2
@@ -35,10 +38,16 @@ class UserSeeder extends Seeder
           $user1 = User::create([
             'name' => 'Vendedor',
             'email' => 'mario@influenciadigital.net',
+            'username' => 'vendedor',
             'phone' => '+50372035819',
             'password' => Hash::make('awesome'),
             'role_id' => 3
           ]);
         }
+      if (Category::all()->count() < 1){
+        $category = Category::create([
+          'name' => 'Categoría por defecto',
+        ]);
+      }
     }
 }

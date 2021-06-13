@@ -25,29 +25,31 @@
     <!-- /.login-box-body -->
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
+            <p class="login-box-msg">Bienvenido</p>
 
             <form method="post" action="{{ url('/login') }}">
                 @csrf
 
                 <div class="input-group mb-3">
-                    <input type="email"
-                           name="email"
-                           value="{{ old('email') }}"
-                           placeholder="Email"
-                           class="form-control @error('email') is-invalid @enderror">
+                    <input type="text"
+                           name="login"
+                           value="{{ old('username') ?: old('email') }}"
+                           placeholder="Correo o nombre de usuario"
+                           class="form-control {{ $errors->has('username') || $errors->has('email') ? ' is-invalid' : '' }}">
                     <div class="input-group-append">
                         <div class="input-group-text"><span class="fas fa-envelope"></span></div>
                     </div>
-                    @error('email')
-                    <span class="error invalid-feedback">{{ $message }}</span>
-                    @enderror
+                     @if ($errors->has('username') || $errors->has('email'))
+                        <span class="error invalid-feedback">
+                            {{ $errors->first('username') ?: $errors->first('email') }}
+                        </span>
+                    @endif
                 </div>
 
                 <div class="input-group mb-3">
                     <input type="password"
                            name="password"
-                           placeholder="Password"
+                           placeholder="Contraseña"
                            class="form-control @error('password') is-invalid @enderror">
                     <div class="input-group-append">
                         <div class="input-group-text">
@@ -76,10 +78,7 @@
             </form>
 
             <p class="mb-1">
-                <a href="{{ route('password.request') }}">I forgot my password</a>
-            </p>
-            <p class="mb-0">
-                <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
+                <a href="{{ route('password.request') }}">Olvidé mi contraseña</a>
             </p>
         </div>
         <!-- /.login-card-body -->
