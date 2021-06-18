@@ -25,5 +25,7 @@ Route::middleware('auth')->prefix('admin')->group(function() {
   Route::get('', 'DashboardController@redirectDashboard');
   Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
   Route::resource('users','UserController');
+  Route::resource('products','ProductController');
+  Route::resource('compras','BuyController');
 
 });

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
+use Storage;
 
 class ProductController extends Controller
 {
@@ -13,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return view('products.index',compact('products'));
     }
 
     /**
@@ -23,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.create');
     }
 
     /**
@@ -34,7 +37,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+          'name' => 'required|max:200',
+          'image' => 'nullable|image|max:2048',
+        ]);
+        $product = new Product();
+        $product->name = $request->name;
+        $product->code = $request->code;
+        $product->category_id = 1;
+        if($request->has('image')){
+            $product->image = $this->uploadImage($request);
+        }
+        $product->save();
+        return redirect()->route('products.index');
     }
 
     /**
@@ -56,7 +71,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        return view('products.edit',compact('product'));
     }
 
     /**
@@ -68,7 +84,19 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+          'name' => 'required|max:200',
+          'image' => 'nullable|image|max:2048',
+        ]);
+        $product = Product::find($id);
+        $product->name = $request->name;
+        $product->code = $request->code;
+        $product->category_id = 1;
+        if($request->has('image')){
+            $product->image = $this->uploadImage($request);
+        }
+        $product->save();
+        return redirect()->route('products.index');
     }
 
     /**
@@ -81,4 +109,29 @@ class ProductController extends Controller
     {
         //
     }
+
+    private function uploadImage($request)
+    {   
+        $filename = null;
+        if ($request->image !== null) {
+            $imageSize = getimagesize($request->image);
+            $avatarExtension = image_type_to_extension($imageSize[2]);
+            $filename = Storage::putFile('public/products', $request->image, 'public');
+
+            // We'll make it square
+            /*$img = Image::make("storage/{$filename}");
+            $width = $imageSize[0];
+            $height = $imageSize[1];
+
+            if ($width > $height) {
+                $height = $width * 0.85;
+            } else {
+                $width = $height / 0.85;
+            }
+            $img->crop((int)$width, (int)$height);
+            $img->save();*/
+        } 
+        return $filename;
+    }
+
 }
