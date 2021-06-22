@@ -15,15 +15,22 @@
 
 <li class="nav-item">
     <a href="{{ route('products.index') }}" class="nav-link {{ Request::routeIs('products.*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
+        <i class="nav-icon fas fa-cart-plus"></i>
         <p>Productos</p>
     </a>
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('compras.index') }}" class="nav-link {{ Request::routeIs('compras.*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
+    <a href="{{ route('purchases.index') }}" class="nav-link {{ Request::routeIs('purchases.*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-money-bill"></i>
         <p>Compras</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('customers.index') }}" class="nav-link {{ Request::routeIs('customers.*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-users"></i>
+        <p>Proveedores</p>
     </a>
 </li>
 

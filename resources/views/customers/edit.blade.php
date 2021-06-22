@@ -1,14 +1,14 @@
 @extends('layouts.app')
-@section('cabecera')
+@section('breadcrumb')
     <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Agregar Producto</h1>
+            <h1>Editar Cliente</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('home')}}">Inicio</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('products.index')}}">Productos</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('dashboard')}}">Inicio</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('customers.index')}}">Clientes</a></li>
               <li class="breadcrumb-item active">Crear</li>
             </ol>
           </div>
@@ -21,15 +21,16 @@
             <div class="col-11">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Datos</h3>
+                        <h3 class="card-title">Clientes</h3>
                     </div>
-                    <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('customers.update', $customer->id) }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        @include('products.form')
+                        @method('PATCH')
+                        @include('customers.form')
                         <br>
                         <div class="text-center">
-                          <button type="submit" class="btn btn-info btn-accept">Agregar</button>
-                          <a href="{{route('products.index')}}" class="btn btn-default btn-clear">Regresar</a>
+                          <button type="submit" class="btn btn-info btn-accept">Editar Cliente</button>
+                          <a href="{{route('customers.index')}}" class="btn btn-default btn-clear">Regresar</a>
                         </div>
                         <br>
                     </form>

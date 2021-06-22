@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ProductDetail;
+use Storage;
 
-class BuyController extends Controller
+class ProductDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,8 @@ class BuyController extends Controller
      */
     public function index()
     {
-        //
+        $details = ProductDetail::all();
+        return view('details.index',compact('details'));
     }
 
     /**
@@ -23,7 +26,7 @@ class BuyController extends Controller
      */
     public function create()
     {
-        //
+        return view('details.create');
     }
 
     /**
@@ -34,7 +37,15 @@ class BuyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*$detail->validate([
+            'code' => 'required',
+        ]);
+
+        $detail = new ProductDetail();
+        $detail->product_id = 1;
+        $detail->name = $request->name;
+        $detail->table = $request->name;
+        $detail->name = $request->name;*/
     }
 
     /**

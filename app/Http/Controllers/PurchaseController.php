@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Customer;
+use App\Purchase;
 use Storage;
 
-class CustomerController extends Controller
+class PurchaseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::all();
-        return view('customers.index',compact('customers'));
+        $purchases = Purchase::all();
+        return view('purchases.index',compact('purchases'));
     }
 
     /**
@@ -26,7 +26,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('customers.create');
+        return view('purchases.create');
     }
 
     /**
@@ -38,18 +38,14 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:5|max:200',
+            'supplier' => 'required|max:200',
         ]);
-        $customer = new Customer();
-        $customer->name = $request->name;
-        $customer->dui = $request->dui;
-        $customer->nit = $request->nit;
-        $customer->nrc = $request->nrc;
-        $customer->phone = $request->phone;
-        $customer->address = $request->address;
-        $customer->email = $request->email;
-        $customer->save();
-        return redirect()->route('customers.index');
+        $purchase = new Purchase();
+        $purchase->supplier = $request->supplier;
+        $purchase->date = $request->date;
+        $purchase->bill_number = $request->bill_number;
+        $purchase->save();
+        return redirect()->route('purchases.edit',$purchase->id);
     }
 
     /**
@@ -60,7 +56,9 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        //
+        $purchase = Purchase::findorFail($id);
+
+        return view('purchases.show', compact('purchase'));
     }
 
     /**
@@ -71,8 +69,8 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        $customer = Customer::find($id);
-        return view('customers.edit',compact('customer'));
+        $purchase = Purchase::find($id);
+        return view('purchases.edit',compact('purchase'));
     }
 
     /**
@@ -85,18 +83,14 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|min:5|max:200',
+            'supplier' => 'required|max:200',
+            'total' => 'required|numeric|min:0.00',
         ]);
-        $customer = Customer::find($id);
-        $customer->name = $request->name;
-        $customer->dui = $request->dui;
-        $customer->nit = $request->nit;
-        $customer->nrc = $request->nrc;
-        $customer->phone = $request->phone;
-        $customer->address = $request->address;
-        $customer->email = $request->email;
-        $customer->save();
-        return redirect()->route('customers.index');
+        $purchase = Purchase::find($id);
+        $purchase->supplier = $request->supplier;
+        $purchase->total = $request->total;
+        $purchase->save();
+        return redirect()->route('purchases.index');
     }
 
     /**
@@ -106,11 +100,6 @@ class CustomerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
-    }
-
-    public function alta()
     {
         //
     }

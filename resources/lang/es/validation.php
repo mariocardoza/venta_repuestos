@@ -200,6 +200,7 @@ return [
         'comment' => 'comentario',
         'excerpt' => 'descripción corta',
         'goal' => 'meta',
+        'supplier' => 'proveedor',
     ],
 
     'exception' => [

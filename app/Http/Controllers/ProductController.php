@@ -44,6 +44,7 @@ class ProductController extends Controller
         $product = new Product();
         $product->name = $request->name;
         $product->code = $request->code;
+        $product->price = $request->price;
         $product->category_id = 1;
         if($request->has('image')){
             $product->image = $this->uploadImage($request);
@@ -91,6 +92,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->name = $request->name;
         $product->code = $request->code;
+        $product->price = $request->price;
         $product->category_id = 1;
         if($request->has('image')){
             $product->image = $this->uploadImage($request);

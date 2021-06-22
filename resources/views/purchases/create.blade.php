@@ -1,14 +1,14 @@
 @extends('layouts.app')
-@section('cabecera')
+@section('breadcrumb')
     <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Agregar Producto</h1>
+            <h1>Agregar Compra</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('home')}}">Inicio</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('products.index')}}">Productos</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('purchases.index')}}">Compras</a></li>
               <li class="breadcrumb-item active">Crear</li>
             </ol>
           </div>
@@ -23,13 +23,13 @@
                     <div class="card-header">
                         <h3 class="card-title">Datos</h3>
                     </div>
-                    <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('purchases.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        @include('products.form')
+                        @include('purchases.form')
                         <br>
                         <div class="text-center">
                           <button type="submit" class="btn btn-info btn-accept">Agregar</button>
-                          <a href="{{route('products.index')}}" class="btn btn-default btn-clear">Regresar</a>
+                          <a href="{{route('purchases.index')}}" class="btn btn-default btn-clear">Regresar</a>
                         </div>
                         <br>
                     </form>

@@ -76,7 +76,7 @@
         <div class="float-right d-none d-sm-block">
             <b>Version</b> 0.0.1
         </div>
-        <strong>Copyright &copy; {{date('Y')}} <a href="https://adminlte.io">integrappsv</a>.</strong> All rights
+        <strong>Copyright &copy; {{date('Y')}} <a href="https://integrappsv.com" target="_blank">integrappsv</a>.</strong> All rights
         reserved.
     </footer>
 </div>
@@ -85,8 +85,12 @@
 <script src="{{ asset('js/datatables.min.js') }}" defer></script>
 <script src="{{ asset('js/pdfmake.min.js') }}" defer></script>
 <script src="{{ asset('js/vfs_fonts.js') }}" defer></script>
+<script src="{{ asset('js/jquery.inputmask.js') }}" defer></script>
 <script>
 $(function(){
+    $(".dui").inputmask("99999999-9");
+    $(".nit").inputmask("9999-999999-999-9");
+    $(".phone").inputmask("9999-9999");
     //Datatable
 $("#dataTable").DataTable({
     dom: 'Bfrtip',
