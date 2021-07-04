@@ -37,7 +37,7 @@
                                 @foreach($purchases as $purchase)
                                     <tr>
                                         <td>{{$purchase->supplier}}</td>
-                                        <td>{{$purchase->total}}</td>
+                                        <td>${{$purchase->total}}</td>
                                         <td class="text-center">
                                             <div class="btn-group">
                                                 <a class="btn" title="Ver" href="{{ route('purchases.show', $purchase->id) }}"><i class="fas fa-eye"></i></a>

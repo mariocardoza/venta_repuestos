@@ -201,6 +201,9 @@ return [
         'excerpt' => 'descripción corta',
         'goal' => 'meta',
         'supplier' => 'proveedor',
+        'bill_number' => 'número de factura',
+        'date' => 'fecha',
+        'product_id' => 'producto',
     ],
 
     'exception' => [

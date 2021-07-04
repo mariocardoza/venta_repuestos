@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('breadcrumb')
+@section('cabecera')
     <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -18,7 +18,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-11">
+            <div class="col-8">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Compras</h3>
@@ -34,6 +34,54 @@
                         </div>
                         <br>
                     </form>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <h3 class="text-center">Productos en la compra</h3>
+            </div>
+            <div class="col-md-10">
+                <a href="{{url('admin/purchase-detail/create?purchase_id='.$purchase->id)}}" class="btn btn-info" type="button">Agregar productos</a>
+                <br>
+                <br>
+                <div class="card">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>N°</th>
+                                <th>Código</th>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Total</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($purchase->detail as $index => $detail)
+                                <tr>
+                                    <td>{{$index+1}}</td>
+                                    <td>{{$detail->product->code}}</td>
+                                    <td>{{$detail->product->name}}</td>
+                                    <td>${{$detail->price}}</td>
+                                    <td>{{$detail->quantity}}</td>
+                                    <td>${{$detail->quantity*$detail->price}}</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a class="btn" title="Editar" href="{{ url('admin/purchase-detail/'.$detail->id.'/edit?purchase_id='.$purchase->id) }}"><i class="fas fa-edit"></i></a>
+                                            <form method="POST" action="{{ route('purchase-detail.destroy', $detail->id) }}">
+                                              @csrf
+                                              @method('DELETE')
+                                              <button type="submit" title="Eliminar" onclick="return confirm('¿Desea eliminar el registro?')" class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

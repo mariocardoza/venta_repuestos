@@ -21,6 +21,7 @@ class CreateProductDetailsTable extends Migration
             $table->integer('state')->default(1);
             $table->boolean('type');
             $table->unsignedBigInteger('sale_id')->nullable();
+            $table->unsignedBigInteger('purchase_id')->nullable();
             $table->timestamps();
         });
     }

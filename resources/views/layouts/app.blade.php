@@ -8,6 +8,10 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{ mix('js/app.js') }}" defer></script>
+    <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/jquery-ui.theme.css') }}" rel="stylesheet">
+
+    <script src="/js/jquery-ui.js" defer></script>
 
     @yield('third_party_stylesheets')
 
@@ -104,57 +108,68 @@ $(function(){
     $(".nit").inputmask("9999-999999-999-9");
     $(".phone").inputmask("9999-9999");
     //Datatable
-$("#dataTable").DataTable({
-    dom: 'Bfrtip',
-    buttons: [
-        {
-            extend: 'excelHtml5',
-            text: 'Excel'
-        },
-        {
-            extend: 'pdfHtml5',
-            text: 'PDF',
-        }
-    ],
-        language: {
-            processing: "Búsqueda en curso...",
-            search: "Buscar:",
-            lengthMenu: "Mostrar _MENU_ Elementos",
-            info: "Mostrando _START_ de _END_ de un total de _TOTAL_ elementos",
-            infoEmpty: "Visualizando 0 de 0 de un total de 0 elementos",
-            infoFiltered: "(Filtrado de _MAX_ elementos en total)",
-            infoPostFix: "",
-            loadingRecords: "Carga de datos en proceso..",
-            zeroRecords: "Elementos no encontrados",
-            emptyTable: "La tabla no contiene datos",
-            paginate: {
-                first: "Primero",
-                previous: "Anterior",
-                next: "siguiente",
-                last: "Último"
+    $("#dataTable").DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'excelHtml5',
+                text: 'Excel'
             },
-        },
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": false,
-        "info": true,
-        "autoWidth": false,
-        "destroy":true
+            {
+                extend: 'pdfHtml5',
+                text: 'PDF',
+            }
+        ],
+            language: {
+                processing: "Búsqueda en curso...",
+                search: "Buscar:",
+                lengthMenu: "Mostrar _MENU_ Elementos",
+                info: "Mostrando _START_ de _END_ de un total de _TOTAL_ elementos",
+                infoEmpty: "Visualizando 0 de 0 de un total de 0 elementos",
+                infoFiltered: "(Filtrado de _MAX_ elementos en total)",
+                infoPostFix: "",
+                loadingRecords: "Carga de datos en proceso..",
+                zeroRecords: "Elementos no encontrados",
+                emptyTable: "La tabla no contiene datos",
+                paginate: {
+                    first: "Primero",
+                    previous: "Anterior",
+                    next: "siguiente",
+                    last: "Último"
+                },
+            },
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": false,
+            "info": true,
+            "autoWidth": false,
+            "destroy":true
+        });
+
+        $('.fechita').datepicker({
+            selectOtherMonths: true,
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-100:+0", // last hundred years
+            dateFormat: 'dd-mm-yy',
+            format: 'dd-mm-yyyy'
+        });
     });
-});
-function modal_cargando(){
-  swal.fire({
-    title: 'Cargando!',
-    text: 'Este diálogo se cerrará al completar la operación.',
-    allowOutsideClick: false,
-    allowEscapeKey: false,
-    showConfirmButton: false,
-    onOpen: function () {
-      swal.showLoading()
+
+     
+    function modal_cargando(){
+      swal.fire({
+        title: 'Cargando!',
+        text: 'Este diálogo se cerrará al completar la operación.',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showConfirmButton: false,
+        onOpen: function () {
+          swal.showLoading()
+        }
+      });
     }
-  });
-}
 </script>
 
 @yield('third_party_scripts')

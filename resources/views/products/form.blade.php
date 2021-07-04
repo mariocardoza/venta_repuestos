@@ -29,7 +29,7 @@
           <div class="col-md-6">
             Precio ($)
           </div>
-          <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ empty($product) ? old('price') : $product->price }}" placeholder="$0.00" title="Precio">
+          <input id="price" step="any" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ empty($product) ? old('price') : $product->price }}" placeholder="$0.00" title="Precio">
           @error('price')
             <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
           @enderror

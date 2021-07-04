@@ -43,7 +43,7 @@
                                         <td>{{$product->name}}</td>
                                         <td>{{$product->price}}</td>
                                         <td><img height="150" width="150" class="img-fluid" src="{{ $product->image!='' ? $product->url_image : asset('images/no-disponible.jpg')}}"></td>
-                                        <td>10</td>
+                                        <td>{{\App\Product::stock($product->id)}}</td>
                                         <td class="text-center">
                                             <div class="btn-group">
                                                 <a class="btn" title="Ver" href="{{ route('products.show', $product->id) }}"><i class="fas fa-eye"></i></a>

@@ -15,4 +15,14 @@ class Product extends Model
         return \Storage::url($this->image);
     }
 
+    public static function retornar_code($product_id,$code){
+        $numero=ProductDetail::where('product_id',$product_id)->count();
+        $numero+=1;
+        return $code.'-'.$numero;
+    }
+
+    public static function stock($product_id){
+        return ProductDetail::where('product_id',$product_id)->where('state',1)->count();
+    }
+
 }

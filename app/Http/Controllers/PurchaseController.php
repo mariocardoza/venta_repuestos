@@ -39,13 +39,16 @@ class PurchaseController extends Controller
     {
         $request->validate([
             'supplier' => 'required|max:200',
+            'date' => 'required',
+            'bill_number' => 'required',
         ]);
         $purchase = new Purchase();
         $purchase->supplier = $request->supplier;
-        $purchase->date = $request->date;
+        $purchase->date = invertir_fecha($request->date);
         $purchase->bill_number = $request->bill_number;
+        $purchase->total = $request->total;
         $purchase->save();
-        return redirect()->route('purchases.edit',$purchase->id);
+        return redirect()->route('purchases.edit',$purchase->id)->with('success','Compra registrada satisfactoriamente');
     }
 
     /**

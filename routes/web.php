@@ -29,6 +29,7 @@ Route::middleware('auth')->prefix('admin')->group(function() {
   Route::post('profile','UserController@updateProfile')->name('profile.store');
   Route::resource('products','ProductController');
   Route::resource('purchases','PurchaseController');
+  Route::resource('purchase-detail','PurchaseDetailController');
   Route::resource('customers','CustomerController');
 
 
