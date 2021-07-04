@@ -25,6 +25,8 @@ Route::middleware('auth')->prefix('admin')->group(function() {
   Route::get('', 'DashboardController@redirectDashboard');
   Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
   Route::resource('users','UserController');
+  Route::get('profile','UserController@getProfile')->name('profile');
+  Route::post('profile','UserController@updateProfile')->name('profile.store');
   Route::resource('products','ProductController');
   Route::resource('purchases','PurchaseController');
   Route::resource('customers','CustomerController');
@@ -32,5 +34,7 @@ Route::middleware('auth')->prefix('admin')->group(function() {
 
 
 
-  Route::resource('shop','ShopController');
+  Route::get('shop','ShopController@index')->name('shop.index');
+  Route::post('shop','ShopController@store')->name('shop.store');
+  Route::post('shop/percentages','ShopController@percentages')->name('shop.percentages');
 });

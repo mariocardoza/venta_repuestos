@@ -112,27 +112,10 @@ class ProductController extends Controller
         //
     }
 
-    private function uploadImage($request)
-    {   
-        $filename = null;
-        if ($request->image !== null) {
-            $imageSize = getimagesize($request->image);
-            $avatarExtension = image_type_to_extension($imageSize[2]);
-            $filename = Storage::putFile('public/products', $request->image, 'public');
-
-            // We'll make it square
-            /*$img = Image::make("storage/{$filename}");
-            $width = $imageSize[0];
-            $height = $imageSize[1];
-
-            if ($width > $height) {
-                $height = $width * 0.85;
-            } else {
-                $width = $height / 0.85;
-            }
-            $img->crop((int)$width, (int)$height);
-            $img->save();*/
-        } 
+    private function uploadImage($request){
+        $imageSize = getimagesize($request->image);
+        $avatarExtension = image_type_to_extension($imageSize[2]);
+        $filename = Storage::putFile('images/products', $request->image, 'public');
         return $filename;
     }
 

@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>{{ config('app.name') }}</title>
+    <title>{{ datos_negocio()->shop_name!= '' ? datos_negocio()->shop_name :  asser('app.name') }}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-          crossorigin="anonymous"/>
-
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
 
     @yield('third_party_stylesheets')
 
@@ -33,21 +31,24 @@
                     
                     <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                 </a>
+                 
+                
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <!-- User image -->
-                    <li class="user-header bg-primary">
+                    <li class="user-header bg-default">
                         
                         <p>
                             {{ Auth::user()->name }}
-                            <small>Member since {{ Auth::user()->created_at->format('M. Y') }}</small>
+                            <small>Miembro desde {{ Auth::user()->created_at->format('M. Y') }}</small>
                         </p>
+                        <img class="img-fluid rounded" src="{{auth()->user()->avatar}}" height="75" alt="">
                     </li>
                     <!-- Menu Footer-->
                     <li class="user-footer">
-                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                        <a href="{{route('profile')}}" class="btn btn-default btn-flat">Perfil</a>
                         <a href="#" class="btn btn-default btn-flat float-right"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Sign out
+                            Cerrar sesión
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
@@ -67,6 +68,19 @@
         </div>
 
         <section class="content">
+            @if (session()->has('error'))
+                <div class="alert alert-danger alert-block alert-dismissable">
+                  <button type="button" class="close" data-dismiss="alert">×</button>
+                  {!! session('error') !!}
+                </div>
+              @endif
+              @if (session()->has('success'))
+                <div class="alert alert-success alert-block alert-dismissable">
+                  <button type="button" class="close" data-dismiss="alert">×</button>
+                  {!! session('success') !!}
+                </div>
+              @endif
+
             @yield('content')
         </section>
     </div>
@@ -80,8 +94,6 @@
         reserved.
     </footer>
 </div>
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script src="{{ mix('js/app.js') }}" defer></script>
 <script src="{{ asset('js/datatables.min.js') }}" defer></script>
 <script src="{{ asset('js/pdfmake.min.js') }}" defer></script>
 <script src="{{ asset('js/vfs_fonts.js') }}" defer></script>
@@ -131,6 +143,18 @@ $("#dataTable").DataTable({
         "destroy":true
     });
 });
+function modal_cargando(){
+  swal.fire({
+    title: 'Cargando!',
+    text: 'Este diálogo se cerrará al completar la operación.',
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    showConfirmButton: false,
+    onOpen: function () {
+      swal.showLoading()
+    }
+  });
+}
 </script>
 
 @yield('third_party_scripts')

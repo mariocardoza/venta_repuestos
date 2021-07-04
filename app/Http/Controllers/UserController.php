@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use Storage;
+use Illuminate\Support\Facades\Hash; 
 
 class UserController extends Controller
 {
@@ -69,26 +71,27 @@ class UserController extends Controller
     public function update(Request $request,$id)
     {
         $request->validate([
-          'fullname' => 'required|max:100',
-          'profession' => 'required|max:100',
-          'role_id' => 'required|max:100',
-          'phone' => 'required|max:100',
-          //'birthday' => 'required|max:100',
+          'name' => 'required|max:100',
+          'phone' => 'nullable|max:100',
         ]);
-        $user=User::find($id);
-        $user->fullname=$request->fullname;
-        $user->phone=$request->phone;
-        $user->profession=$request->profession;
-        $user->birthday= $request->birthday !=null ? $request->birthday : '1990-01-01';
-        $user->role_id=$request->role_id;
+
+        $user = User::find($id);
+        $user->name = $request->name;
+        if($user->email!= $request->email){
+            $this->validate($request,['email'=> 'required|unique:users|email']);
+        }
+        if($user->username!= $request->username){
+            $this->validate($request,['username'=> 'required|unique:users']);
+        }
         if($request->filled('password')):
                 $this->validate($request,['password'=> 'confirmed|min:7|string']);
             $user->password=Hash::make($request->password);
         endif;
-        if($user->email!= $request->email){
-            $this->validate($request,['email'=> 'required|unique:users|email']);
-        }
-        $user->email=$request->email;
+        $user->email = $request->email;
+        $user->username = $request->username;
+        $user->dui = $request->dui;
+        $user->nit = $request->nit;
+        $user->phone = $request->phone;
         $user->save();
         return redirect()->route('users.index')->with('success', 'Usuario actualizado satisfactoriamente.');
     }
@@ -102,6 +105,51 @@ class UserController extends Controller
             $user->delete();
         endif;
         return redirect()->back()->with('success', 'Usuario eliminado satisfactoriamente.');
+    }
+
+    public function getProfile(){
+        return view('users.profile');
+    }
+
+    public function updateProfile(Request $request){
+        $request->validate([
+          'name' => 'required|max:100',
+          'phone' => 'nullable|max:100',
+          'avatar' => 'image|mimes:png,jpg|max:2048',
+          //'username' => 'required|max:100',
+          //'email' => 'required|max:192',
+          //'password' => 'required|confirmed|string|min:7',
+        ]);
+
+        $user = User::find(auth()->user()->id);
+        $user->name = $request->name;
+        if($user->email!= $request->email){
+            $this->validate($request,['email'=> 'required|unique:users|email']);
+        }
+        if($user->username!= $request->username){
+            $this->validate($request,['username'=> 'required|unique:users']);
+        }
+        if($request->filled('password')):
+                $this->validate($request,['password'=> 'confirmed|min:7|string']);
+            $user->password=Hash::make($request->password);
+        endif;
+        $user->email = $request->email;
+        $user->username = $request->username;
+        $user->dui = $request->dui;
+        $user->nit = $request->nit;
+        $user->phone = $request->phone;
+        if(!is_null($request->avatar)){
+            $user->avatar = url(Storage::url($this->uploadImage($request)));
+        }
+        $user->save();
+        return redirect()->back()->with('success', 'Perfil modificado satisfactoriamente.');
+    }
+
+    private function uploadImage($request){
+        $imageSize = getimagesize($request->avatar);
+        $avatarExtension = image_type_to_extension($imageSize[2]);
+        $filename = Storage::putFile('images/avatars', $request->avatar, 'public');
+        return $filename;
     }
 
 }

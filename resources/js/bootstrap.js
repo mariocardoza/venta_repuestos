@@ -10,8 +10,14 @@ try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
-
-
+    require('bootstrap');
+    window.swal = require('sweetalert2');
+    require('chosen-js');
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 } catch (e) {
 }
 

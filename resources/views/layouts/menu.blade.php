@@ -1,8 +1,15 @@
 <!-- need to remove -->
 <li class="nav-item">
-    <a href="{{ route('home') }}" class="nav-link {{ Request::routeIs('home') ? 'active' : '' }}">
+    <a href="{{ route('dashboard') }}" class="nav-link {{ Request::routeIs('dashboard') ? 'active' : '' }}">
         <i class="nav-icon fas fa-home"></i>
-        <p>Home</p>
+        <p>Inicio</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('shop.index') }}" class="nav-link {{ Request::routeIs('shop.*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-globe"></i>
+        <p>Administración</p>
     </a>
 </li>
 
