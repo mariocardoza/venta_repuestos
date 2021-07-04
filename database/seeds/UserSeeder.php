@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\User;
 use App\Category;
+use App\Configuration;
 
 class UserSeeder extends Seeder
 {
@@ -47,6 +48,13 @@ class UserSeeder extends Seeder
       if (Category::all()->count() < 1){
         $category = Category::create([
           'name' => 'Categoría por defecto',
+        ]);
+      }
+
+      /* datos del negocio */
+      if (Configuration::all()->count() < 1){
+        $shop = Configuration::create([
+          'shop_name' => 'Nombre negocio',
         ]);
       }
     }

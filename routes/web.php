@@ -29,4 +29,8 @@ Route::middleware('auth')->prefix('admin')->group(function() {
   Route::resource('purchases','PurchaseController');
   Route::resource('customers','CustomerController');
 
+
+
+
+  Route::resource('shop','ShopController');
 });
