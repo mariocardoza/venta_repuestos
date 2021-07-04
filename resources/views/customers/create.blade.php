@@ -28,8 +28,8 @@
                         @include('customers.form')
                         <br>
                         <div class="text-center">
-                          <button type="submit" class="btn btn-info btn-accept">Agregar</button>
-                          <a href="{{route('customers.index')}}" class="btn btn-default btn-clear">Regresar</a>
+                          <button type="submit" title="Agregar Proveedor" class="btn btn-info btn-accept">Agregar</button>
+                          <a href="{{route('customers.index')}}" title="Cancelar y Regresar" class="btn btn-default btn-clear">Regresar</a>
                         </div>
                         <br>
                     </form>

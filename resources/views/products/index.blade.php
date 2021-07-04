@@ -23,7 +23,7 @@
                         <h3 class="card-title">Productos</h3>
                     </div>
                     <div class="card-body">
-                        <a class="btn btn-info float-right" href="{{ route('products.create')}}">Nuevo</a>
+                        <a class="btn btn-info float-right" title="Agregar Producto" href="{{ route('products.create')}}">Nuevo</a>
                         <br>
                         <table class="table table-bordered " id="dataTable">
                             <thead>
@@ -46,12 +46,12 @@
                                         <td>10</td>
                                         <td class="text-center">
                                             <div class="btn-group">
-                                                <a class="btn" href="{{ route('products.show', $product->id) }}"><i class="fas fa-eye"></i></a>
-                                                <a class="btn" href="{{ route('products.edit', $product->id) }}"><i class="fas fa-edit"></i></a>
+                                                <a class="btn" title="Ver" href="{{ route('products.show', $product->id) }}"><i class="fas fa-eye"></i></a>
+                                                <a class="btn" title="Editar" href="{{ route('products.edit', $product->id) }}"><i class="fas fa-edit"></i></a>
                                                 <form method="POST" action="{{ route('products.destroy', $product->id) }}">
                                                   @csrf
                                                   @method('DELETE')
-                                                  <button type="submit" onclick="return confirm('¿Desea eliminar el proyecto?')" class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
+                                                  <button type="submit" title="Eliminar" onclick="return confirm('¿Desea eliminar el proyecto?')" class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
                                                 </form>
                                             </div>
                                         </td>

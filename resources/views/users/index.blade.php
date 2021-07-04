@@ -23,7 +23,7 @@
                         <h3 class="card-title">Usuarios</h3>
                     </div>
                     <div class="card-body">
-                        <a class="btn btn-info float-right" href="{{ route('users.create')}}">Nuevo</a>
+                        <a class="btn btn-info float-right" title="Agregar Usuario" href="{{ route('users.create')}}">Nuevo</a>
                         <br>
                         <table class="table table-bordered datatables">
                             <thead>
@@ -46,11 +46,11 @@
                                         <td>{{$user->role->name}}</td>
                                         <td class="text-center">
                                             <div class="btn-group">
-                                                <a class="btn" href="{{ route('users.edit', $user->id) }}"><i class="fas fa-edit"></i></a>
+                                                <a class="btn" title="Editar" href="{{ route('users.edit', $user->id) }}"><i class="fas fa-edit"></i></a>
                                                 <form method="POST" action="{{ route('users.destroy', $user->id) }}">
                                                   @csrf
                                                   @method('DELETE')
-                                                  <button type="submit" onclick="return confirm('¿Desea eliminar el usuario?')" class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
+                                                  <button type="submit" title="Eliminar" onclick="return confirm('¿Desea eliminar el usuario?')" class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
                                                 </form>
                                             </div>
                                         </td>
