@@ -18,7 +18,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ url('/home') }}"><b>{{ config('app.name') }}</b></a>
+        <a href="{{ url('/home') }}"><b>{{  datos_negocio()->shop_name!= '' ? datos_negocio()->shop_name : config('app.name') }}</b></a>
     </div>
     <!-- /.login-logo -->
 
@@ -63,20 +63,20 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-8">
+                    <!--div class="col-8">
                         <div class="icheck-primary">
                             <input type="checkbox" id="remember">
                             <label for="remember">Remember Me</label>
                         </div>
-                    </div>
+                    </div-->
 
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
                     </div>
 
                 </div>
             </form>
-
+            <br>
             <p class="mb-1">
                 <a href="{{ route('password.request') }}">Olvidé mi contraseña</a>
             </p>

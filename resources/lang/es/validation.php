@@ -184,7 +184,6 @@ return [
         'receptor_email' => 'correo electrónico',
         'receptor_phone' => 'teléfono receptor',
         'lot_code' => 'código de lote',
-        'min_reserve_amount' => 'monto minimo de reserva',
         'fullname' => 'nombre completo',
         'days_to_pay' => 'dias para pagar',
         'type_claim' => 'tipo de daño',
@@ -196,14 +195,11 @@ return [
         'social_area' => 'área social',
         'update' => 'actualización',
         'update_date' => 'fecha de actualización',
-        'sponsor' => 'patrocinio',
-        'comment' => 'comentario',
-        'excerpt' => 'descripción corta',
-        'goal' => 'meta',
         'supplier' => 'proveedor',
         'bill_number' => 'número de factura',
         'date' => 'fecha',
         'product_id' => 'producto',
+        'username' => 'nombre de usuario'
     ],
 
     'exception' => [

@@ -48,11 +48,7 @@
                                             <div class="btn-group">
                                                 <a class="btn" title="Ver" href="{{ route('products.show', $product->id) }}"><i class="fas fa-eye"></i></a>
                                                 <a class="btn" title="Editar" href="{{ route('products.edit', $product->id) }}"><i class="fas fa-edit"></i></a>
-                                                <form method="POST" action="{{ route('products.destroy', $product->id) }}">
-                                                  @csrf
-                                                  @method('DELETE')
-                                                  <button type="submit" title="Eliminar" onclick="return confirm('¿Desea eliminar el proyecto?')" class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
-                                                </form>
+                                                <button type="button" id="del-product" data-id="{{ $product->id }}" title="Eliminar" class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
                                             </div>
                                         </td>
                                     </tr>
@@ -64,4 +60,112 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" data-backdrop="static" data-keyboard="false" id="modal_autizacion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Formulario de autorización por el administrador</h4>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" id="form_autorizacion">              
+                        <div class="form-group">
+                            <label for="" class="control-label">Digite el nombre de usuario</label>
+                            <div class="">
+                                <input type="text" id="el_username" name="username" class="form-control">
+                                <input type="hidden" name="elid" id="elid">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label">
+                                  Contraseña
+                            </label>
+                            <div>
+                                <input type="password" id="el_password" name="password" class="form-control">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <center><button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="autorizacion_del" class="btn btn-success">Confirmar</button></center>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
+@push('page_scripts')
+<script>
+    $(function(){
+        //eliminar producto
+        $(document).on("click","#del-product",function(e){
+            e.preventDefault();
+            let id = $(this).attr('data-id');
+            //let confirmed = confirm("¿Desea eliminar el producto?");
+            //if (confirmed == true) {
+            $("#modal_autizacion").modal("show");
+            $("#elid").val(id);
+            //}
+        });
+        //autorización para eliminar producto 
+        $(document).on("click","#autorizacion_del", function(e){
+          swal.fire({
+            title: 'Buscando en la base de datos!',
+            text: 'Este diálogo se cerrará al completar la operación.',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showConfirmButton: false,
+            onOpen: function () {
+              swal.showLoading()
+            }
+          });
+          e.preventDefault();
+          var username = $("#el_username").val();
+          var password = $("#el_password").val();
+          var elid = $("#elid").val();
+          $.ajax({
+            url:'/admin/autorizacion',
+            type:'post',
+            dataType:'json',
+            data:{username, password,elid},
+            success: function(json){
+              swal.closeModal();
+              if(json[0]==1){
+                
+                if(json[2]==1){
+                  toastr.success("Usuario correcto");
+                  $("#modal_autizacion").modal("hide");
+                  $("#form_autorizacion").trigger("reset");
+                  $.ajax({
+                    url:'/admin/products/'+json[3],
+                    type:'delete',
+                    dataType:'json',
+                    success: function(json){
+
+                    },error: function(error){
+                        toastr.error('Ocurrió un error, contacte al administrador');
+                    }
+                  })
+                  swal.closeModal();
+                }else{
+                  toastr.info("El Usuario ingresado no es administrador");
+                  swal.closeModal();
+                }
+                swal.closeModal();
+              }else{
+                toastr.error("El nombre de usuario o la contraseña son erróneos");
+                swal.closeModal();
+              }
+            },
+            error: function(error){
+              console.log(error);
+              $.each(error.responseJSON.errors, function( key, value ) {
+                toastr.error(value);
+              });
+              swal.closeModal();
+            }
+          });
+        });
+    });
+</script>
+@endpush
