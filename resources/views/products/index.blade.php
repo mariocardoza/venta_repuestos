@@ -141,11 +141,16 @@
                     type:'delete',
                     dataType:'json',
                     success: function(json){
-
+                        if(json[0]==1){
+                            toastr.success('Eliminado con éxito');
+                            location.reload();
+                        }else{
+                            toastr.error('Ocurrió un error, contacte al administrador');
+                        }
                     },error: function(error){
                         toastr.error('Ocurrió un error, contacte al administrador');
                     }
-                  })
+                  });
                   swal.closeModal();
                 }else{
                   toastr.info("El Usuario ingresado no es administrador");
