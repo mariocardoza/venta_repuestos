@@ -42,4 +42,5 @@ Route::middleware('auth')->prefix('admin')->group(function() {
   Route::get('shop','ShopController@index')->name('shop.index');
   Route::post('shop','ShopController@store')->name('shop.store');
   Route::post('shop/percentages','ShopController@percentages')->name('shop.percentages');
+  Route::get('logs','LogController@index')->name('logs.index');
 });

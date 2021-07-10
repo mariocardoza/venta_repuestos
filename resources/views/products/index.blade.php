@@ -25,36 +25,38 @@
                     <div class="card-body">
                         <a class="btn btn-info float-right" title="Agregar Producto" href="{{ route('products.create')}}">Nuevo</a>
                         <br>
-                        <table class="table table-bordered " id="dataTable">
-                            <thead>
-                                <tr>
-                                  <th>Código</th>
-                                  <th>Nombre del producto</th>
-                                  <th>Precio</th>
-                                  <th>Imagen</th>
-                                  <th>Stock</th>
-                                  <th class="text-center">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($products as $product)
+                        <div class="table-responsive">
+                            <table class="table table-bordered " id="dataTable">
+                                <thead>
                                     <tr>
-                                        <td>{{$product->code}}</td>
-                                        <td>{{$product->name}}</td>
-                                        <td>{{$product->price}}</td>
-                                        <td><img height="150" width="150" class="img-fluid" src="{{ $product->image!='' ? $product->url_image : asset('images/no-disponible.jpg')}}"></td>
-                                        <td>{{\App\Product::stock($product->id)}}</td>
-                                        <td class="text-center">
-                                            <div class="btn-group">
-                                                <a class="btn" title="Ver" href="{{ route('products.show', $product->id) }}"><i class="fas fa-eye"></i></a>
-                                                <a class="btn" title="Editar" href="{{ route('products.edit', $product->id) }}"><i class="fas fa-edit"></i></a>
-                                                <button type="button" id="del-product" data-id="{{ $product->id }}" title="Eliminar" class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
-                                            </div>
-                                        </td>
+                                      <th class="table-dark">Código</th>
+                                      <th class="table-dark">Nombre del producto</th>
+                                      <th class="table-dark">Precio</th>
+                                      <th class="table-dark">Imagen</th>
+                                      <th class="table-dark">Stock</th>
+                                      <th  class="table-dark text-center">Acciones</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach($products as $product)
+                                        <tr>
+                                            <td>{{$product->code}}</td>
+                                            <td>{{$product->name}}</td>
+                                            <td>{{$product->price}}</td>
+                                            <td><img height="150" width="150" class="img-fluid" src="{{ $product->image!='' ? $product->url_image : asset('images/no-disponible.jpg')}}"></td>
+                                            <td>{{\App\Product::stock($product->id)}}</td>
+                                            <td class="text-center">
+                                                <div class="btn-group">
+                                                    <a class="btn" title="Ver" href="{{ route('products.show', $product->id) }}"><i class="fas fa-eye"></i></a>
+                                                    <a class="btn" title="Editar" href="{{ route('products.edit', $product->id) }}"><i class="fas fa-edit"></i></a>
+                                                    <button type="button" id="del-product" data-id="{{ $product->id }}" title="Eliminar" class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

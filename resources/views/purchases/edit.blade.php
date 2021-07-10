@@ -46,17 +46,17 @@
                 <a href="{{url('admin/purchase-detail/create?purchase_id='.$purchase->id)}}" class="btn btn-info" type="button">Agregar productos</a>
                 <br>
                 <br>
-                <div class="card">
+                <div class="card table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>N°</th>
-                                <th>Código</th>
-                                <th>Producto</th>
-                                <th>Precio</th>
-                                <th>Cantidad</th>
-                                <th>Total</th>
-                                <th>Acciones</th>
+                                <th class="table-dark">N°</th>
+                                <th class="table-dark">Código</th>
+                                <th class="table-dark">Producto</th>
+                                <th class="table-dark">Precio</th>
+                                <th class="table-dark">Cantidad</th>
+                                <th class="table-dark">Total</th>
+                                <th class="table-dark">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>

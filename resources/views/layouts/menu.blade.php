@@ -1,4 +1,5 @@
 <!-- need to remove -->
+@if(auth()->user()->role_id!=3)
 <li class="nav-item">
     <a href="{{ route('dashboard') }}" class="nav-link {{ Request::routeIs('dashboard') ? 'active' : '' }}">
         <i class="nav-icon fas fa-home"></i>
@@ -20,19 +21,29 @@
     </a>
 </li>
 
+
+<li class="nav-item">
+    <a href="{{ route('logs.index') }}" class="nav-link {{ Request::routeIs('logs.*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-calendar-check"></i>
+        <p>Registro de actividad</p>
+    </a>
+</li>
+@endif
+
 <li class="nav-item">
     <a href="{{ route('products.index') }}" class="nav-link {{ Request::routeIs('products.*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-cart-plus"></i>
         <p>Productos</p>
     </a>
 </li>
-
+@if(auth()->user()->role_id!=3)
 <li class="nav-item">
     <a href="{{ route('purchases.index') }}" class="nav-link {{ Request::routeIs('purchases.*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-money-bill"></i>
         <p>Compras</p>
     </a>
 </li>
+@endif
 
 <li class="nav-item">
     <a href="{{ route('customers.index') }}" class="nav-link {{ Request::routeIs('customers.*') ? 'active' : '' }}">
