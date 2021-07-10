@@ -24,6 +24,8 @@ class CreateSalesTable extends Migration
             $table->double('subtotal')->nullable();
             $table->string('document_number')->nullable();
             $table->UnsignedBigInteger('user_id')->nullable();
+            $table->integer('correlative');
+            $table->UnsignedBigInteger('receipt_id');
             $table->foreign('customer_id')->references('id')->on('customers');
             $table->timestamps();
         });

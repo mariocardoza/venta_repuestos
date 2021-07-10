@@ -13,7 +13,7 @@
           </select>
         </div>
         <div class="col-md-3 col-6">
-          <label for="">Tipo de comprobante</label>
+          <label for="">Comprobante</label>
           <select name="receipt_type" id="receipt_type" class="form-control">
             <option value="1">Recibo</option>
             <option value="2">Consumidor final</option>
@@ -41,25 +41,30 @@
                 <div class="card card-default">
                   <div class="card-header">
                     <h3 class="float-left">Detalle de la Venta</h3>
+                    <div class="float-right">
+                      <button type="button" id="md_trabajos" class="btn btn-info"><i class="fas fa-plus"></i>Producto</button>
+                    </div>
                   </div>
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-12">
-                        <table width="100%" class="table-bordered" id="tablita">
-                          <thead>
-                            <tr>
-                              <th>Cantidad</th>
-                              <th>Producto ($)</th>
-                              <th>Cantidad</th>
-                              <th>Precio ($)</th>
-                              <th>Acciones</th>
-                            </tr>
-                          </thead>
-                          <tbody>
+                        <div class="table-responsive">
+                          <table width="100%" class="table-bordered" id="tablita">
+                            <thead>
+                              <tr>
+                                <th class="table-dark">Código</th>
+                                <th class="table-dark">Producto</th>
+                                <th class="table-dark">Cantidad</th>
+                                <th class="table-dark">Precio ($)</th>
+                                <th class="table-dark">Acciones</th>
+                              </tr>
+                            </thead>
+                            <tbody>
                             
-                          </tbody>
-                          <tfoot></tfoot>
-                        </table>
+                            </tbody>
+                            <tfoot></tfoot>
+                          </table>
+                        </div>
                       </div>
                     </div>
                   </div>

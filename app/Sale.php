@@ -12,4 +12,9 @@ class Sale extends Model
     {
         return $this->hasMany('App\Customer');
     }
+
+    public function receipt()
+    {
+    	return $this->belongsTo('App\Receipt');
+    }
 }
