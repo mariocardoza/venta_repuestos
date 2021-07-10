@@ -3,12 +3,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Agregar Proveedores</h1>
+            <h1>Agregar Clientes</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('home')}}">Inicio</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('customers.index')}}">Proveedores</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('customers.index')}}">Clientes</a></li>
               <li class="breadcrumb-item active">Crear</li>
             </ol>
           </div>
@@ -28,7 +28,7 @@
                         @include('customers.form')
                         <br>
                         <div class="text-center">
-                          <button type="submit" title="Agregar Proveedor" class="btn btn-info btn-accept">Agregar</button>
+                          <button type="submit" title="Agregar Cliente" class="btn btn-info btn-accept">Guardar</button>
                           <a href="{{route('customers.index')}}" title="Cancelar y Regresar" class="btn btn-default btn-clear">Regresar</a>
                         </div>
                         <br>

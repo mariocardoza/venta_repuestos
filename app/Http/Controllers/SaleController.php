@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Customer;
+use App\Sale;
+use Storage;
 
 class SaleController extends Controller
 {
@@ -13,7 +16,8 @@ class SaleController extends Controller
      */
     public function index()
     {
-        //
+        $sales = Sale::all();
+        return view('sales.index',compact('sales'));
     }
 
     /**
@@ -23,7 +27,9 @@ class SaleController extends Controller
      */
     public function create()
     {
-        //
+        $customers = Customer::all();
+        $sales = Sale::all();
+        return view('sales.create', compact('customers','sales'));
     }
 
     /**
@@ -34,7 +40,7 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect()->route('sales.index');
     }
 
     /**
@@ -56,7 +62,8 @@ class SaleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sale = Sale::find($id);
+        return view('sales.edit',compact('sale'));
     }
 
     /**

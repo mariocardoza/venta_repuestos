@@ -3,12 +3,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Listado de Clientes</h1>
+            <h1>Listado de Ventas</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('dashboard')}}">Inicio</a></li>
-              <li class="breadcrumb-item active">Clientes</li>
+              <li class="breadcrumb-item active">Ventas</li>
             </ol>
           </div>
         </div>
@@ -20,36 +20,37 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Clientes</h3>
+                        <h3 class="card-title">Ventas</h3>
                     </div>
                     <div class="card-body">
-                        <a class="btn btn-info float-right" title="Agregar Cliente" href="{{ route('customers.create')}}">Nuevo</a>
+                        <a class="btn btn-info float-right" title="Agregar Venta" href="{{ route('sales.create')}}">Nuevo</a>
                         <br>
                         <table class="table table-bordered " id="dataTable">
                             <thead>
                                 <tr>
-                                  <th>Nombre</th>
-                                  <th>DUI</th>
-                                  <th>Teléfono</th>
-                                  <th>Email</th>
+                                  <th>Comprador</th>
+                                  <th>Fecha Venta</th>
+                                  <th>Total</th>
+
                                   <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($customers as $customer)
+                                @foreach($sales as $sale)
                                     <tr>
-                                        <td>{{$customer->name}}</td>
-                                        <td>{{$customer->dui}}</td>
-                                        <td>{{$customer->phone}}</td>
-                                        <td>{{$customer->email}}</td>
+                                        <td>{{$sale->customer_id}}</td>
+                                        <td>{{$sale->sale_date}}</td>
+                                        <td>{{$sale->total}}</td>
+                                        <td><img height="150" width="150" class="img-fluid" src="{{ $sale->image!='' ? $product->url_image : asset('images/no-disponible.jpg')}}"></td>
+                                        <td>{{\App\Sale::stock($sale->id)}}</td>
                                         <td class="text-center">
                                             <div class="btn-group">
-                                                <a class="btn" title="Ver" href="{{ route('customers.show', $customer->id) }}"><i class="fas fa-eye"></i></a>
-                                                <a class="btn" title="Editar" href="{{ route('customers.edit', $customer->id) }}"><i class="fas fa-edit"></i></a>
-                                                <form method="POST" action="{{ route('customers.destroy', $customer->id) }}">
+                                                <a class="btn" title="Ver" href="{{ route('sales.show', $sale->id) }}"><i class="fas fa-eye"></i></a>
+                                                <a class="btn" title="Editar" href="{{ route('sales.edit', $sale->id) }}"><i class="fas fa-edit"></i></a>
+                                                <form method="POST" action="{{ route('sales.destroy', $sale->id) }}">
                                                   @csrf
                                                   @method('DELETE')
-                                                  <button type="submit" title="Eliminar" onclick="return confirm('¿Desea eliminar el registro?')" class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
+                                                  <button type="submit" title="Eliminar" onclick="return confirm('¿Desea eliminar el proyecto?')" class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
                                                 </form>
                                             </div>
                                         </td>

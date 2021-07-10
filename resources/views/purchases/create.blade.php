@@ -28,7 +28,7 @@
                         @include('purchases.form')
                         <br>
                         <div class="text-center">
-                          <button type="submit" title="Agregar Compra" class="btn btn-info btn-accept">Agregar</button>
+                          <button type="submit" title="Agregar Compra" class="btn btn-info btn-accept">Guardar</button>
                           <a href="{{route('purchases.index')}}" title="Cancelar y Regresar" class="btn btn-default btn-clear">Regresar</a>
                         </div>
                         <br>

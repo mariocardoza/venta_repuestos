@@ -22,6 +22,7 @@ class CreateCustomersTable extends Migration
             $table->string('phone')->nullable();
             $table->text('address')->nullable();
             $table->string('email')->nullable();
+            $table->integer('sector')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

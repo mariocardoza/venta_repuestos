@@ -28,7 +28,7 @@
                         @include('products.form')
                         <br>
                         <div class="text-center">
-                          <button type="submit" title="Agregar Producto" class="btn btn-info btn-accept">Agregar</button>
+                          <button type="submit" title="Agregar Producto" class="btn btn-info btn-accept">Guardar</button>
                           <a href="{{route('products.index')}}" title="Cancelar y Regresar" class="btn btn-default btn-clear">Regresar</a>
                         </div>
                         <br>

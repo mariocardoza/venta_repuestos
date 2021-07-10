@@ -37,7 +37,14 @@
 <li class="nav-item">
     <a href="{{ route('customers.index') }}" class="nav-link {{ Request::routeIs('customers.*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-users"></i>
-        <p>Proveedores</p>
+        <p>Clientes</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('sales.index') }}" class="nav-link {{ Request::routeIs('sales.*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-shopping-bag"></i>
+        <p>Ventas</p>
     </a>
 </li>
 

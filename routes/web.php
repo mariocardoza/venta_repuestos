@@ -31,6 +31,8 @@ Route::middleware('auth')->prefix('admin')->group(function() {
   Route::resource('purchases','PurchaseController');
   Route::resource('purchase-detail','PurchaseDetailController');
   Route::resource('customers','CustomerController');
+  Route::resource('sales','SaleController');
+  Route::resource('sale_details','SaleDetailController');
 
 
 

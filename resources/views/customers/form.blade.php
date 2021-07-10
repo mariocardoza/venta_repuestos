@@ -7,7 +7,7 @@
           <div class="col-sm-2">
             <label>Nombre</label>
           </div>
-          <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ empty($customer) ? old('name') : $customer->name }}" placeholder="Proveedor" title="Proveedor">
+          <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ empty($customer) ? old('name') : $customer->name }}" placeholder="Clientes" title="Cliente">
           @error('name')
             <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
           @enderror

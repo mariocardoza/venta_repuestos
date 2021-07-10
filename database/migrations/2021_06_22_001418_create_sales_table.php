@@ -15,13 +15,15 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->UnsignedBigInteger('customer_id');
-            $table->date('sale_date');
-            $table->double('total',12,2);
+            $table->UnsignedBigInteger('customer_id')->nullable();
+            $table->date('sale_date')->nullable();
+            $table->double('total',12,2)->nullable();
             $table->double('iva')->default(0);
             $table->double('ivar')->default(0);
-            $table->boolean('state');
-            $table->double('subtotal');
+            $table->boolean('state')->nullable();
+            $table->double('subtotal')->nullable();
+            $table->string('document_number')->nullable();
+            $table->UnsignedBigInteger('user_id')->nullable();
             $table->foreign('customer_id')->references('id')->on('customers');
             $table->timestamps();
         });
