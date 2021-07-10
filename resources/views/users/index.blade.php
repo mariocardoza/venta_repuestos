@@ -25,39 +25,41 @@
                     <div class="card-body">
                         <a class="btn btn-info float-right" title="Agregar Usuario" href="{{ route('users.create')}}">Nuevo</a>
                         <br>
-                        <table class="table table-bordered datatables">
-                            <thead>
-                                <tr>
-                                  <th>Nombre completo</th>
-                                  <th>Correo electrónico</th>
-                                  <th>Nombre de usuario</th>
-                                  <th>Teléfono</th>
-                                  <th>Rol</th>
-                                  <th class="text-center">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($users as $user)
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable">
+                                <thead>
                                     <tr>
-                                        <td>{{$user->name}}</td>
-                                        <td>{{$user->username}}</td>
-                                        <td>{{$user->email}}</td>
-                                        <td>{{$user->phone}}</td>
-                                        <td>{{$user->role->name}}</td>
-                                        <td class="text-center">
-                                            <div class="btn-group">
-                                                <a class="btn" title="Editar" href="{{ route('users.edit', $user->id) }}"><i class="fas fa-edit"></i></a>
-                                                <form method="POST" action="{{ route('users.destroy', $user->id) }}">
-                                                  @csrf
-                                                  @method('DELETE')
-                                                  <button type="submit" title="Eliminar" onclick="return confirm('¿Desea eliminar el usuario?')" class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
-                                                </form>
-                                            </div>
-                                        </td>
+                                      <th class="table-dark">Nombre completo</th>
+                                      <th class="table-dark">Correo electrónico</th>
+                                      <th class="table-dark">Nombre de usuario</th>
+                                      <th class="table-dark">Teléfono</th>
+                                      <th class="table-dark">Rol</th>
+                                      <th class="table-dark">Acciones</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach($users as $user)
+                                        <tr>
+                                            <td>{{$user->name}}</td>
+                                            <td>{{$user->username}}</td>
+                                            <td>{{$user->email}}</td>
+                                            <td>{{$user->phone}}</td>
+                                            <td>{{$user->role->name}}</td>
+                                            <td class="text-center">
+                                                <div class="btn-group">
+                                                    <a class="btn" title="Editar" href="{{ route('users.edit', $user->id) }}"><i class="fas fa-edit"></i></a>
+                                                    <form method="POST" action="{{ route('users.destroy', $user->id) }}">
+                                                      @csrf
+                                                      @method('DELETE')
+                                                      <button type="submit" title="Eliminar" onclick="return confirm('¿Desea eliminar el usuario?')" class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
