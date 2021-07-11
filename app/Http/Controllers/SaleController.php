@@ -65,7 +65,8 @@ class SaleController extends Controller
      */
     public function show($id)
     {
-        //
+        $sale = Sale::find($id);
+        return view('sales.detail.show',compact('sale'));
     }
 
     /**
