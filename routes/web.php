@@ -35,7 +35,7 @@ Route::middleware('auth')->prefix('admin')->group(function() {
   Route::resource('customers','CustomerController');
   Route::resource('sales','SaleController');
   Route::resource('sale_details','SaleDetailController');
-
+  Route::get('sales/preview/{id}','SaleController@previews');
 
 
 

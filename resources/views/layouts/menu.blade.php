@@ -53,9 +53,16 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('sales.index') }}" class="nav-link {{ Request::routeIs('sales.*') ? 'active' : '' }}">
+    <a href="{{ route('sales.index') }}" class="nav-link {{ Request::routeIs('sales.index') ? 'active' : '' }}">
         <i class="nav-icon fas fa-shopping-bag"></i>
-        <p>Ventas</p>
+        <p>Ventas realizadas</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('sales.create') }}" class="nav-link {{ Request::routeIs('sales.create') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-shopping-bag"></i>
+        <p>Nueva Venta</p>
     </a>
 </li>
 

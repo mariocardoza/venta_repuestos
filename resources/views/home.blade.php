@@ -69,7 +69,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>{{\App\Sale::where('receipt_id',3)where('state',1)->count()}}</h3>
+                <h3>{{\App\Sale::where('receipt_id',3)->where('state',1)->count()}}</h3>
 
                 <p>Crédito fiscal</p>
               </div>
@@ -82,9 +82,9 @@
 
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-danger">
+            <div class="small-box bg-secondary">
               <div class="inner">
-                <h3>{{\App\Sale::where('receipt_id',2)where('state',1)->count()}}</h3>
+                <h3>{{\App\Sale::where('receipt_id',2)->where('state',1)->count()}}</h3>
 
                 <p>Consumidor Final</p>
               </div>

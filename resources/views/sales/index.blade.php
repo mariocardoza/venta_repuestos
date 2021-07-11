@@ -28,7 +28,7 @@
                         <table class="table table-bordered " id="dataTable">
                             <thead>
                                 <tr>
-                                  <th>Comprador</th>
+                                  <th>Cliente</th>
                                   <th>Fecha Venta</th>
                                   <th>Total</th>
 
@@ -38,15 +38,13 @@
                             <tbody>
                                 @foreach($sales as $sale)
                                     <tr>
-                                        <td>{{$sale->customer_id}}</td>
+                                        <td>{{$sale->customer->name}}</td>
                                         <td>{{$sale->sale_date}}</td>
-                                        <td>{{$sale->total}}</td>
-                                        <td><img height="150" width="150" class="img-fluid" src="{{ $sale->image!='' ? $product->url_image : asset('images/no-disponible.jpg')}}"></td>
-                                        <td>{{\App\Sale::stock($sale->id)}}</td>
+                                        <td>${{number_format($sale->total,2)}}</td>
                                         <td class="text-center">
                                             <div class="btn-group">
                                                 <a class="btn" title="Ver" href="{{ route('sales.show', $sale->id) }}"><i class="fas fa-eye"></i></a>
-                                                <a class="btn" title="Editar" href="{{ route('sales.edit', $sale->id) }}"><i class="fas fa-edit"></i></a>
+                                                <!--a class="btn" title="Editar" href="{{ route('sales.edit', $sale->id) }}"><i class="fas fa-edit"></i></a-->
                                                 <form method="POST" action="{{ route('sales.destroy', $sale->id) }}">
                                                   @csrf
                                                   @method('DELETE')

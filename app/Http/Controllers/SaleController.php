@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Customer;
 use App\Sale;
+use App\Receipt;
+use App\Product;
 use Storage;
+use DB;
 
 class SaleController extends Controller
 {
@@ -28,8 +31,9 @@ class SaleController extends Controller
     public function create()
     {
         $customers = Customer::all();
-        $sales = Sale::all();
-        return view('sales.create', compact('customers','sales'));
+        $receipts = Receipt::all();
+        $products = Product::all();
+        return view('sales.create', compact('customers','receipts','products'));
     }
 
     /**
@@ -40,7 +44,17 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect()->route('sales.index');
+        $sale = Sale::find($request->sale_id);
+        try{
+            $sale->state = 1;
+            $sale->save();
+            DB::commit();
+            return array(1,"exito",$sale->id);
+        }catch(\Exception $e){
+            DB::rollback();
+            return array(-1,"error",$e->getMessage());
+        }
+        return $sale;
     }
 
     /**
@@ -87,5 +101,11 @@ class SaleController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function previews($id)
+    {
+        $retorno=Sale::obtenerprevias($id);
+        return $retorno;
     }
 }

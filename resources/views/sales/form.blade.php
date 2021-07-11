@@ -4,7 +4,7 @@
       <div class="form-group row">
         <div class="col-12 col-md-6 ">
           <label for="">Cliente</label>
-          <input type="hidden" name="sale" id="sale" value="0">
+          <input type="hidden" name="sale_id" id="sale_id" value="0">
           <select name="customer_id" id="customer_id" class="form-control">
             <option value="">Seleccione un Cliente</option>
               @foreach($customers as $c)
@@ -15,9 +15,9 @@
         <div class="col-md-3 col-6">
           <label for="">Comprobante</label>
           <select name="receipt_type" id="receipt_type" class="form-control">
-            <option value="1">Recibo</option>
-            <option value="2">Consumidor final</option>
-            <option value="3">Crédito Fiscal</option>
+            @foreach($receipts as $receipt)
+              <option value="{{$receipt->id}}">{{$receipt->name}}</option>
+            @endforeach
           </select>
           @error('receipt_type')
             <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
@@ -49,19 +49,18 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="table-responsive">
-                          <table width="100%" class="table-bordered" id="tablita">
+                          <table width="100%" class="table table-bordered" id="tabita">
                             <thead>
                               <tr>
-                                <th class="table-dark">Código</th>
-                                <th class="table-dark">Producto</th>
-                                <th class="table-dark">Cantidad</th>
-                                <th class="table-dark">Precio ($)</th>
-                                <th class="table-dark">Acciones</th>
+                                <th class="table-secondary">Código</th>
+                                <th class="table-secondary">Producto</th>
+                                <th class="table-secondary">Precio $</th>
+                                <th class="table-secondary">Cantidad</th>
+                                <th class="table-secondary">Subtotal</th>
+                                <th class="table-secondary">Acciones</th>
                               </tr>
                             </thead>
-                            <tbody>
-                            
-                            </tbody>
+                            <tbody></tbody>
                             <tfoot></tfoot>
                           </table>
                         </div>
