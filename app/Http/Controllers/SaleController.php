@@ -134,7 +134,7 @@ class SaleController extends Controller
             $product_detail->product_id = $product->id;
             $product_detail->table = 'Product';
             $product_detail->sale_id = $sale_id;
-            $product_detail->type =2;
+            $product_detail->type =0;
             $product_detail->state =0;
             $product_detail->save();
         }
