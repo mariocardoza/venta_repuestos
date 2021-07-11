@@ -27,13 +27,13 @@
                             <table class="table table-bordered" id="dataTable">
                                 <thead>
                                     <tr>
-                                        <th class="text-center table-dark">#</th>
-                                        <th class="text-center table-dark">Acción</th>
-                                        <th class="text-center table-dark">Url</th>
-                                        <th class="text-center table-dark">Ip</th>
-                                        <th class="text-center table-dark">Usuario</th>
-                                        <th class="text-center table-dark">Método</th>
-                                        <th class="text-center table-dark">Fecha actividad</th>
+                                        <th class="text-center table-secondary">#</th>
+                                        <th class="text-center table-secondary">Acción</th>
+                                        <th class="text-center table-secondary">Url</th>
+                                        <th class="text-center table-secondary">Ip</th>
+                                        <th class="text-center table-secondary">Usuario</th>
+                                        <th class="text-center table-secondary">Método</th>
+                                        <th class="text-center table-secondary">Fecha actividad</th>
                                     </tr>
                                 </thead>
                                 <tbody >

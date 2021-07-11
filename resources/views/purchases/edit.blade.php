@@ -19,7 +19,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-8">
-                <div class="card">
+                <div class="card card-secondary">
                     <div class="card-header">
                         <h3 class="card-title">Compras</h3>
                     </div>
@@ -50,15 +50,14 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="table-dark">N°</th>
-                                <th class="table-dark">Código</th>
-                                <th class="table-dark">Producto</th>
-                                <th class="table-dark">Precio</th>
-                                <th class="table-dark">Cantidad</th>
-                                <th class="table-dark">Total</th>
-                                <th class="table-dark">Acciones</th>
-                            </tr>
-                        </thead>
+                                <th class="table-secondary">N°</th>
+                                <th class="table-secondary">Código</th>
+                                <th class="table-secondary">Producto</th>
+                                <th class="table-secondary">Precio</th>
+                                <th class="table-secondary">Cantidad</th>
+                                <th class="table-secondary">Total</th>
+                                <th class="table-secondary">Acciones</th>
+                            </trsecondary                        </thead>
                         <tbody>
                             @foreach($purchase->detail as $index => $detail)
                                 <tr>

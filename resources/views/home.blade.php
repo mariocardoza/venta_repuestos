@@ -54,7 +54,9 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>{{\App\Sale::all()->count()}}</h3>
+                <h3>{{\App\Sale::where('receipt_id',1)->count()}}</h3>
+                <h3>{{\App\Sale::where('receipt_id',1)->count()}}</h3>
+                <h3>{{\App\Sale::where('receipt_id',1)->count()}}</h3>
 
                 <p>Ventas</p>
               </div>

@@ -29,12 +29,12 @@
                             <table class="table table-bordered " id="dataTable">
                                 <thead>
                                     <tr>
-                                      <th class="table-dark">Código</th>
-                                      <th class="table-dark">Nombre del producto</th>
-                                      <th class="table-dark">Precio</th>
-                                      <th class="table-dark">Imagen</th>
-                                      <th class="table-dark">Stock</th>
-                                      <th  class="table-dark text-center">Acciones</th>
+                                      <th class="table-secondary">Código</th>
+                                      <th class="table-secondary">Nombre del producto</th>
+                                      <th class="table-secondary">Precio</th>
+                                      <th class="table-secondary">Imagen</th>
+                                      <th class="table-secondary">Stock</th>
+                                      <th  class="table-secondary text-center">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,7 +47,6 @@
                                             <td>{{\App\Product::stock($product->id)}}</td>
                                             <td class="text-center">
                                                 <div class="btn-group">
-                                                    <a class="btn" title="Ver" href="{{ route('products.show', $product->id) }}"><i class="fas fa-eye"></i></a>
                                                     <a class="btn" title="Editar" href="{{ route('products.edit', $product->id) }}"><i class="fas fa-edit"></i></a>
                                                     <button type="button" id="del-product" data-id="{{ $product->id }}" title="Eliminar" class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
                                                 </div>

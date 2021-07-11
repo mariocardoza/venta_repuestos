@@ -19,7 +19,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-11">
-                <div class="card">
+                <div class="card card-secondary">
                     <div class="card-header">
                         <h3 class="card-title">Datos</h3>
                     </div>

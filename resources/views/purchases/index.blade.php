@@ -29,9 +29,9 @@
                             <table class="table table-bordered " id="dataTable">
                                 <thead>
                                     <tr>
-                                      <th class="table-dark">Proveedor</th>
-                                      <th class="table-dark">Total</th>
-                                      <th class="table-dark text-center">Acciones</th>
+                                      <th class="table-secondary">Proveedor</th>
+                                      <th class="table-secondary">Total</th>
+                                      <th class="table-secondary text-center">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>

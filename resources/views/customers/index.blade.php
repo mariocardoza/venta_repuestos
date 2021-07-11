@@ -29,11 +29,11 @@
                             <table class="table table-bordered " id="dataTable">
                                 <thead>
                                     <tr>
-                                      <th class="table-dark">Nombre</th>
-                                      <th class="table-dark">DUI</th>
-                                      <th class="table-dark">Teléfono</th>
-                                      <th class="table-dark">Email</th>
-                                      <th class="table-dark">Acciones</th>
+                                      <th class="table-secondary">Nombre</th>
+                                      <th class="table-secondary">DUI</th>
+                                      <th class="table-secondary">Teléfono</th>
+                                      <th class="table-secondary">Email</th>
+                                      <th class="table-secondary">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -45,7 +45,6 @@
                                             <td>{{$customer->email}}</td>
                                             <td class="text-center">
                                                 <div class="btn-group">
-                                                    <a class="btn" title="Ver" href="{{ route('customers.show', $customer->id) }}"><i class="fas fa-eye"></i></a>
                                                     <a class="btn" title="Editar" href="{{ route('customers.edit', $customer->id) }}"><i class="fas fa-edit"></i></a>
                                                     <form method="POST" action="{{ route('customers.destroy', $customer->id) }}">
                                                       @csrf
