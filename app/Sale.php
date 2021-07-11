@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sale extends Model
 {
-    protected $dates = ['date'];
+    protected $dates = ['sale_date'];
 
     public function detail()
     {
@@ -55,8 +55,8 @@ class Sale extends Model
                 <td>'.$r->amount.'</td>
                 <td>'.number_format($r->price*$r->amount,2).'</td>
                 <td>
-                    <button title="Editar repuesto" type="button" id="editar_repuesto" data-id="'.$r->id.'" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
-                    <button title="Eliminar repuesto" type="button" id="eliminar_repuesto" data-id="'.$r->id.'" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                    <button title="Editar repuesto" type="button" data-id="'.$r->id.'" class="btn btn-warning btn-sm editar_repuesto"><i class="fas fa-edit"></i></button>
+                    <button title="Eliminar repuesto" type="button" data-id="'.$r->id.'" class="btn btn-danger btn-sm eliminar_repuesto"><i class="fas fa-trash"></i></button>
                 </td>
             </tr>';
             $total=$total+($r->amount*$r->price);

@@ -8,6 +8,7 @@
           <h3 class="card-title">Datos de Venta</h3>
         </div>
           <div class="card-body">
+            <a target="_blank" href="{{url('/admin/sales/pdf/'.$sale->id)}}" class="btn btn-info"><i class="fas fa-print"></i></a>
             <div class="form-group col-sm-7">
               <label for="supplier">Cliente</label>
                 <h4>{{ $sale->customer->name }}</h4> 

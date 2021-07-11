@@ -132,6 +132,7 @@
             var existencia=$('option:selected',this).attr("data-existencia");
 
             $("#n_precio_r").val(precio);
+            $("#n_cantidad_r").val(1);
             $(".codir").val(codigo);
             $("#existencia").val(existencia);
 
@@ -144,14 +145,15 @@
         $(document).on("click","#btn_agregar_repuesto",function(e){
             var product_id=$("#elselect_r").val();
             var precio=$("#n_precio_r").val();
-            var cantidad=$("#n_cantidad_r").val();
+            var cantidad=parseInt($("#n_cantidad_r").val());
             var customer_id=$('#customer_id').val();
             var fecha=$(".fecha").val();
             var sale_id=$("#sale_id").val();
             var receipt_id=$("#receipt_type").val();
             var sale_date=$("#sale_date").val();
-            var existencia = $("#existencia").val();
-            if(cantidad > 0 && cantidad <= existencia){
+            var existencia = parseInt($("#existencia").val());
+            console.log("cantidad: "+cantidad+" Y existencia: "+existencia);
+            if((cantidad > 0) && (cantidad <= existencia)){
                 modal_cargando();
                 $.ajax({
                     url:'/admin/sale_details',
@@ -194,7 +196,7 @@
         });
 
         // modal editar repuesto previo
-        $(document).on("click","#editar_repuesto",function(e){
+        $(document).on("click",".editar_repuesto",function(e){
             e.preventDefault();
             var id=$(this).attr("data-id");
             $.ajax({
@@ -217,8 +219,9 @@
             var id=$(this).attr("data-id");
             var sale_id=$("#sale_id").val();
             var datos=$("#form_repuesto_edit").serialize();
-            var e_canti = $(".e_cantidad_r").val();
-            var existencia = $("#e_existencia").val();
+            var e_canti = parseInt($(".e_cantidad_r").val());
+            var existencia = parseInt($("#e_existencia").val());
+            console.log("cantidad: "+e_canti+" Y existencia: "+existencia);
             if(e_canti > 0 && e_canti <= existencia){
                 modal_cargando();
                 $.ajax({
@@ -255,7 +258,7 @@
         });
 
         //eliminar un repuesto
-        $(document).on("click","#eliminar_repuesto",function(e){
+        $(document).on("click",".eliminar_repuesto",function(e){
             e.preventDefault();
             var id=$(this).attr("data-id");
             var sale_id=$("#sale_id").val();
@@ -311,7 +314,6 @@
         $(document).on("click","#complete_sale",function(e){
             e.preventDefault();
             var sale_id = $("#sale_id").val();
-            alert(sale_id);
             if(sale_id==0){
                 location.href="/admin/sales";
             }else{

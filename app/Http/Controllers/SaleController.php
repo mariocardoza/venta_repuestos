@@ -7,6 +7,7 @@ use App\Customer;
 use App\Sale;
 use App\Receipt;
 use App\Product;
+use App\ProductDetail;
 use Storage;
 use DB;
 
@@ -19,7 +20,7 @@ class SaleController extends Controller
      */
     public function index()
     {
-        $sales = Sale::all();
+        $sales = Sale::whereState(1)->get();
         return view('sales.index',compact('sales'));
     }
 
@@ -47,6 +48,9 @@ class SaleController extends Controller
         $sale = Sale::find($request->sale_id);
         try{
             $sale->state = 1;
+            foreach($sale->detail as $detail){
+                $this->update_inventory($detail,$sale->id);
+            }
             $sale->save();
             DB::commit();
             return array(1,"exito",$sale->id);
@@ -108,5 +112,31 @@ class SaleController extends Controller
     {
         $retorno=Sale::obtenerprevias($id);
         return $retorno;
+    }
+
+    public function pdf($id)
+    {
+        $sale=Sale::find($id);
+        //dd($cotizacion->repuestodetalle);
+        $pdf = \PDF::loadView('sales.prueba',compact('sale'));
+        $pdf->setPaper('letter', 'portrait');
+        return $pdf->stream('venta.pdf');
+    }
+
+    private function update_inventory($detail,$sale_id){
+        $product = Product::find($detail->product_id);
+        $cuantos = $detail->amount;
+        //dd($cuantos);
+        $t=[];
+        for($i=0;$i<$cuantos;$i++){
+            $t++;
+            $product_detail = ProductDetail::where('product_id',$product->id)->where('state',1)->orderBy('id','asc')->first();
+            $product_detail->product_id = $product->id;
+            $product_detail->table = 'Product';
+            $product_detail->sale_id = $sale_id;
+            $product_detail->type =2;
+            $product_detail->state =2;
+            $product_detail->save();
+        }
     }
 }
