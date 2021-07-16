@@ -123,6 +123,24 @@ class SaleController extends Controller
         return $pdf->stream('venta.pdf');
     }
 
+    public function day(Request $request){
+        if($request->has('day') && $request->filled('day')){
+            return view('sales.day');
+        }else{
+            $sales = Sale::where('created_at','<=',date('Y-m-d 23:59:59'))->where('created_at','>=',date('Y-m-d 00:00:00'))->get();
+            return view('sales.day',compact('sales'));
+        }
+    }
+
+    public function dayly(Request $request)
+    {
+        $sales=Sale::get();
+        //dd($cotizacion->repuestodetalle);
+        $pdf = \PDF::loadView('sales.reporte_diario',compact('sales'));
+        $pdf->setPaper('letter', 'portrait');
+        return $pdf->stream('ventas.pdf');
+    }
+
     private function update_inventory($detail,$sale_id){
         $product = Product::find($detail->product_id);
         $cuantos = $detail->amount;

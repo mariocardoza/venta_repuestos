@@ -30,7 +30,7 @@ class ShopController extends Controller
             $shop->nrc = $request->nrc;
             $shop->nit = $request->nit;
             if(!is_null($request->logo)){
-              $shop->logo = url(Storage::url($this->uploadImage($request)));
+              $shop->logo = $this->uploadImage($request);
             }
 
             $shop->save();

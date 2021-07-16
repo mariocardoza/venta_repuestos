@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head>
 <META http-equiv="Content-Type" content="text/html">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="description" content=""><meta name="author" content=""><meta name="copyright" content=""><meta name="date" content=""><title>Cotización</title><!--Global document styles, if any-->
+<meta name="description" content=""><meta name="author" content=""><meta name="copyright" content=""><meta name="date" content=""><title>Comprobante de venta</title><!--Global document styles, if any-->
 <style type="text/css"></style>
 <style type="text/css"><!--.FRX1_8{
   text-align:right;direction:ltr;vertical-align: top; font-family: "Calibri"; font-size: 10pt; border: 0px none; padding: 0px; margin: 0px;font-weight: normal;color:#000000;background-color:transparent;overflow:hidden; position: absolute;

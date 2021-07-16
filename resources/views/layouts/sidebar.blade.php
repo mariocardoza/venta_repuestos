@@ -7,7 +7,7 @@
     <div class="sidebar">
         <br>
         <div class="col-md-12">
-            <img class="m-auto d-block" height="100" src="{{ datos_negocio()->logo!= '' ? datos_negocio()->logo :  asset('images/no-disponible.jpg') }}" alt="">
+            <img class="m-auto d-block" height="100" src="{{ datos_negocio()->logo!= '' ? datos_negocio()->url_logo :  asset('images/no-disponible.jpg') }}" alt="">
         </div>
         <br>
         <nav class="mt-2">
