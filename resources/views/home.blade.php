@@ -22,9 +22,9 @@
         <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-info">
+            <div class="small-box bg-primary">
               <div class="inner">
-                <h3>{{\App\Customer::all()->count()}}</h3>
+                <h3>{{\App\Sale::where('created_at','>=',date('Y-m-d 00:00:00'))->where('created_at','<=',date('Y-m-d 23:59:59'))->where('state',1)->count()}}</h3>
 
                 <p>Ventas del día</p>
               </div>

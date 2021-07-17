@@ -124,10 +124,12 @@ class SaleController extends Controller
     }
 
     public function day(Request $request){
-        if($request->has('day') && $request->filled('day')){
-            return view('sales.day');
+        if($request->has('fecha') && $request->filled('fecha')){
+            $fecha = invertir_fecha($request->fecha);
+            $sales = Sale::where('created_at','<=', $fecha.' 23:59:59')->where('created_at','>=',$fecha.' 00:00:00')->where('state',1)->get();
+            return view('sales.day',compact('sales'));
         }else{
-            $sales = Sale::where('created_at','<=',date('Y-m-d 23:59:59'))->where('created_at','>=',date('Y-m-d 00:00:00'))->get();
+            $sales = Sale::where('created_at','<=',date('Y-m-d 23:59:59'))->where('created_at','>=',date('Y-m-d 00:00:00'))->where('state',1)->get();
             return view('sales.day',compact('sales'));
         }
     }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Sale;
 use App\SaleDetail;
+use App\ProductDetail;
 
 class SaleDetailController extends Controller
 {
@@ -40,9 +41,16 @@ class SaleDetailController extends Controller
         $request->validate([
           'customer_id' => 'required',
           'sale_date' => 'required',
+          'product_id' => 'required',
+          'precio' => 'required|numeric|min:0',
+          'cantidad' => 'required|numeric|min:1',
         ]);
         try{
             DB::beginTransaction();
+            $stock = $this->stock($request->product_id);
+            if($stock < $request->cantidad){
+                return array(2,"La cantidad ingresada de ".$request->cantidad." sobrepasa las existencias");
+            }
             if($request->sale_id==0):
                 $sale=new Sale();
                 $sale->customer_id=$request->customer_id;
@@ -88,6 +96,10 @@ class SaleDetailController extends Controller
 
             else:
                 $sale=Sale::find($request->sale_id);
+                $deta = SaleDetail::where('sale_id',$sale->id)->where('product_id',$request->product_id)->count();
+                if($deta > 0){
+                    return array(2,"El producto ya fue registrado a esta venta");
+                }
                 $detail= new SaleDetail();
                 $detail->product_id=$request->product_id;
                 //'nombre'=>$rrr->nombre,
@@ -159,6 +171,10 @@ class SaleDetailController extends Controller
             DB::beginTransaction();
             $sale=Sale::find($request->sale_id);
             $repuesto=SaleDetail::find($id);
+            $stock = $this->stock($repuesto->product_id);
+            if($stock < $request->cantidad){
+                return array(2,"La cantidad ingresada de ".$request->cantidad." sobrepasa las existencias",$stock);
+            }
             //quitar ala salezacion lo que tiene en el repuesto
             $totalante=$repuesto->amount*$repuesto->price;
             $saletot=$sale->subtotal;
@@ -248,5 +264,9 @@ class SaleDetailController extends Controller
           DB::rollback();
             return array(-1,"error",$e->getMessage());
         }
+    }
+
+    private function stock($product_id){
+        return ProductDetail::where('product_id',$product_id)->where('state',1)->count();
     }
 }

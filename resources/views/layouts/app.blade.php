@@ -102,6 +102,7 @@
 <script src="{{ asset('js/pdfmake.min.js') }}" defer></script>
 <script src="{{ asset('js/vfs_fonts.js') }}" defer></script>
 <script src="{{ asset('js/jquery.inputmask.js') }}" defer></script>
+<script src="{{ asset('js/loadImage.js') }}" defer></script>
 <script>
 $(function(){
     $(".dui").inputmask("99999999-9");

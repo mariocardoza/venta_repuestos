@@ -28,7 +28,7 @@
                         	<div class="form-group row">
 	                          <div class="col-md-12">
 	                            <label>Adjunte foto de perfil</label>
-	                            <input id="avatar" type="file" class="form-control @error('avatar') is-invalid @enderror" name="avatar" value="" placeholder="Seleccionar avatar" title="Seleccione avatar">
+	                            <input id="avatar" type="file" accept="image/*" class="form-control @error('avatar') is-invalid @enderror" name="avatar" value="" placeholder="Seleccionar avatar" title="Seleccione avatar">
 	                            <p class="info-text">Formatos permitidos: png. Dimensión 100x100px. Máx: 2mb.</p>
 	                            @error('avatar')
 							        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>

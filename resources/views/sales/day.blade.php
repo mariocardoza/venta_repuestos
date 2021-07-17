@@ -23,6 +23,19 @@
                         <h3 class="card-title">Ventas</h3>
                     </div>
                     <div class="card-body">
+                        <form action="{{ route('sales.day')}}" method="GET">
+                            <div class="row">
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input name="fecha" placeholder="Seleccione una fecha" type="text" autocomplete="off" class="form-control fechita">
+                                    </div>
+                                </div>
+                                <div class="col-4 justify-content-center">
+                                    <button type="submit" class="btn btn-info">Buscar</button>
+                                </div>
+                            </div>
+                        </form>
                         <a class="btn btn-info float-right" title="Agregar Venta" href="{{ route('sales.create')}}">Nuevo</a>
                         <a target="_blank" class="btn btn-info float-left" title="Imprimir reporte" href="{{ route('sales.dayly')}}">Imprimir</a>
                         <br><br>

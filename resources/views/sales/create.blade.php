@@ -153,7 +153,7 @@
             var sale_date=$("#sale_date").val();
             var existencia = parseInt($("#existencia").val());
             console.log("cantidad: "+cantidad+" Y existencia: "+existencia);
-            if((cantidad > 0) && (cantidad <= existencia)){
+            //if((cantidad > 0) && (cantidad <= existencia)){
                 modal_cargando();
                 $.ajax({
                     url:'/admin/sale_details',
@@ -173,7 +173,12 @@
                         }else{
                             swal.closeModal();
                             if(json[0]==2){
-                                toastr.info(json[1]);
+                                swal.fire(
+                                  'Aviso',
+                                  json[1],
+                                  'warning'
+                                );
+                                //toastr.info(json[1]);
                             }else{
                                 toastr.error("Ocurrió un error");
                             }
@@ -186,13 +191,13 @@
                         });
                     }
                 });
-            }else{
+            /*}else{
                 swal.fire(
                   'Aviso',
                   'La cantidad ingresada sobrepasa las existencias',
                   'warning'
                 );
-            }
+            }*/
         });
 
         // modal editar repuesto previo
@@ -222,7 +227,7 @@
             var e_canti = parseInt($(".e_cantidad_r").val());
             var existencia = parseInt($("#e_existencia").val());
             console.log("cantidad: "+e_canti+" Y existencia: "+existencia);
-            if(e_canti > 0 && e_canti <= existencia){
+            //if(e_canti > 0 && e_canti <= existencia){
                 modal_cargando();
                 $.ajax({
                     url:'/admin/sale_details/'+id,
@@ -237,8 +242,17 @@
                             obtenerprevias(json[2]);
                             swal.closeModal();
                         }else{
-                            toastr.error("Ocurrió un error");
                             swal.closeModal();
+                            if(json[0]==2){
+                                swal.fire(
+                                  'Aviso',
+                                  json[1],
+                                  'warning'
+                                );
+                                //toastr.info(json[1]);
+                            }else{
+                                toastr.error("Ocurrió un error");
+                            }
                         }
                     },
                     error: function(error){
@@ -248,13 +262,13 @@
                         swal.closeModal();
                     }
                 });
-            }else{
+            /*}else{
                 swal.fire(
                   'Aviso',
                   'La cantidad ingresada sobrepasa las existencias',
                   'warning'
                 );
-            }
+            }*/
         });
 
         //eliminar un repuesto

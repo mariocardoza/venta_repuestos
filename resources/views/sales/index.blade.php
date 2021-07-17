@@ -39,7 +39,7 @@
                                 @foreach($sales as $sale)
                                     <tr>
                                         <td>{{$sale->customer->name}}</td>
-                                        <td>{{$sale->sale_date}}</td>
+                                        <td>{{$sale->sale_date->format('d/m/Y')}}</td>
                                         <td>${{number_format($sale->total,2)}}</td>
                                         <td class="text-center">
                                             <div class="btn-group">
