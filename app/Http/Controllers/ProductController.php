@@ -43,6 +43,10 @@ class ProductController extends Controller
         ]);
         $product = new Product();
         $product->name = $request->name;
+        if($request->code != "")
+        {
+            $this->validate($request,['code'=>'unique:products']);
+        }
         $product->code = $request->code;
         $product->price = $request->price;
         $product->category_id = 1;
@@ -91,6 +95,10 @@ class ProductController extends Controller
         ]);
         $product = Product::find($id);
         $product->name = $request->name;
+        if($request->code != "")
+        {
+            $this->validate($request,['code'=>'unique:products']);
+        }
         $product->code = $request->code;
         $product->price = $request->price;
         $product->category_id = 1;

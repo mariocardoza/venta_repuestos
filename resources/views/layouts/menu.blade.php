@@ -46,6 +46,13 @@
 @endif
 
 <li class="nav-item">
+    <a href="{{ route('categories.index') }}" class="nav-link {{ Request::routeIs('categories.*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-check-square"></i>
+        <p>Marcas</p>
+    </a>
+</li>
+
+<li class="nav-item">
     <a href="{{ route('customers.index') }}" class="nav-link {{ Request::routeIs('customers.*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-users"></i>
         <p>Clientes</p>

@@ -39,7 +39,8 @@ Route::middleware('auth')->prefix('admin')->group(function() {
   Route::get('sales/preview/{id}','SaleController@previews');
   Route::get('sales/pdf/{id}','SaleController@pdf');
   Route::get('sales/dayly/report','SaleController@dayly')->name('sales.dayly');
-
+  Route::resource('categories','CategoryController');
+  Route::resource('subcategories','SubcategoryController');
 
 
   Route::get('shop','ShopController@index')->name('shop.index');
