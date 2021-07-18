@@ -199,7 +199,9 @@ return [
         'bill_number' => 'número de factura',
         'date' => 'fecha',
         'product_id' => 'producto',
-        'username' => 'nombre de usuario'
+        'username' => 'nombre de usuario',
+        'category_id' => 'marca',
+        'customer_id' => 'cliente',
     ],
 
     'exception' => [

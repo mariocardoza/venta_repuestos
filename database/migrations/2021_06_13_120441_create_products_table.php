@@ -18,7 +18,9 @@ class CreateProductsTable extends Migration
             $table->string('code')->nullable();
             $table->string('name');
             $table->text('image')->nullable();
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('subcategory_id')->nullable();
+            $table->string('engine_number')->nullable();
             $table->double('price',10,2);
             $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();

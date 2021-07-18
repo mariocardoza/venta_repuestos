@@ -25,4 +25,15 @@ class Product extends Model
         return ProductDetail::where('product_id',$product_id)->where('state',1)->count();
     }
 
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
+
+    public function subcategory()
+    {
+        return $this->belongsTo('App\Subcategory');
+    }
+
+
 }

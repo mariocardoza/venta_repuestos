@@ -53,6 +53,13 @@
 </li>
 
 <li class="nav-item">
+    <a href="{{ route('subcategories.index') }}" class="nav-link {{ Request::routeIs('subcategories.*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-check-square"></i>
+        <p>Modelos</p>
+    </a>
+</li>
+
+<li class="nav-item">
     <a href="{{ route('customers.index') }}" class="nav-link {{ Request::routeIs('customers.*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-users"></i>
         <p>Clientes</p>

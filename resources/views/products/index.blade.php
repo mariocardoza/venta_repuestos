@@ -32,6 +32,9 @@
                                       <th class="table-secondary">Código</th>
                                       <th class="table-secondary">Nombre del producto</th>
                                       <th class="table-secondary">Precio</th>
+                                      <th class="table-secondary">Marca</th>
+                                      <th class="table-secondary">Modelo</th>
+                                      <th class="table-secondary">Número motor</th>
                                       <th class="table-secondary">Imagen</th>
                                       <th class="table-secondary">Stock</th>
                                       <th  class="table-secondary text-center">Acciones</th>
@@ -43,7 +46,10 @@
                                             <td>{{$product->code}}</td>
                                             <td>{{$product->name}}</td>
                                             <td>{{$product->price}}</td>
-                                            <td><img height="150" width="150" class="img-fluid" src="{{ $product->image!='' ? $product->url_image : asset('images/no-disponible.jpg')}}"></td>
+                                            <td>{{$product->category->name}}</td>
+                                            <td>{{$product->subcategory->name}}</td>
+                                            <td>{{$product->engine_number}}</td>
+                                            <td><img height="100" width="100" class="img-fluid" src="{{ $product->image!='' ? $product->url_image : asset('images/no-disponible.jpg')}}"></td>
                                             <td>{{\App\Product::stock($product->id)}}</td>
                                             <td class="text-center">
                                                 <div class="btn-group">

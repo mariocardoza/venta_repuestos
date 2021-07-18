@@ -108,4 +108,14 @@ class SubcategoryController extends Controller
         $subcategory->delete();
         return redirect()->route('subcategories.index')->with("success","Registro eliminado exitosamente");
     }
+
+    public function list($id)
+    {
+        $subcategories = Subcategory::where('category_id',$id)->get();
+        $options='<option selected value=""> Ninguno</option>';
+        foreach ($subcategories as $subcategory) {
+          $options.='<option value="' . $subcategory->id . '">' . $subcategory->name . '</option>';
+        }
+        return array(1, $subcategories, $options);
+    }
 }

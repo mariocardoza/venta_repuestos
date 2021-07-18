@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Category;
 use Storage;
 
 class ProductController extends Controller
@@ -26,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $categories = Category::all();
+        return view('products.create',compact('categories'));
     }
 
     /**
@@ -49,7 +51,9 @@ class ProductController extends Controller
         }
         $product->code = $request->code;
         $product->price = $request->price;
-        $product->category_id = 1;
+        $product->category_id = $request->category_id;
+        $product->subcategory_id = $request->subcategory_id;
+        $product->engine_number = $request->engine_number;
         if($request->has('image')){
             $product->image = $this->uploadImage($request);
         }
@@ -77,7 +81,9 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-        return view('products.edit',compact('product'));
+        $categories = Category::all();
+
+        return view('products.edit',compact('product','categories'));
     }
 
     /**
@@ -101,7 +107,9 @@ class ProductController extends Controller
         }
         $product->code = $request->code;
         $product->price = $request->price;
-        $product->category_id = 1;
+        $product->category_id = $request->category_id;
+        $product->subcategory_id = $request->subcategory_id;
+        $product->engine_number = $request->engine_number;
         if($request->has('image')){
             $product->image = $this->uploadImage($request);
         }

@@ -12,7 +12,7 @@
         </div>
         <div class="col-12">
           <label for="">Marca</label>
-          <select name="category_id" id="category_id" class="form-control">
+          <select name="category_id" id="category_id" class="form-control @error('name') is-invalid @enderror">
             <option value="">Seleccione una Marca</option>
               @foreach($categories as $c)
                 @if(isset($subcategory) && $c->id == $subcategory->category_id)
@@ -22,6 +22,9 @@
                 @endif
               @endforeach
           </select>
+          @error('category_id')
+            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+          @enderror
         </div>
     </div>
   </div>
