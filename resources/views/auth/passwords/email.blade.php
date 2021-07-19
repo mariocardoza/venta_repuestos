@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ config('app.name') }}</title>
+    <title>{{ datos_negocio()->shop_name!= '' ? datos_negocio()->shop_name : config('app.name') }}</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -15,10 +15,10 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-image: url('/images/fondo1.jpg'); background-size: cover; background-repeat: no-repeat;">
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ url('/home') }}"><b>{{ config('app.name') }}</b></a>
+        <a style="color: white;" href="{{ url('/home') }}"><b>{{ datos_negocio()->shop_name!= '' ? datos_negocio()->shop_name : config('app.name') }}</b></a>
     </div>
 
     <!-- /.login-logo -->

@@ -92,10 +92,9 @@
     <!-- Main Footer -->
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
-            <b>Version</b> 0.0.1
+            <b>Versión</b> 1
         </div>
-        <strong>Copyright &copy; {{date('Y')}} <a href="https://integrappsv.com" target="_blank">integrappsv</a>.</strong> All rights
-        reserved.
+        <strong>Copyright &copy; {{date('Y')}} {{ datos_negocio()->shop_name!= '' ? datos_negocio()->shop_name :  asser('app.name') }}.</strong> Todos los derechos reservados. Desarrollado por: <strong><a href="http://integrappsv.com" target="_blank">IntegrAppSV</a></strong>
     </footer>
 </div>
 <script src="{{ asset('js/datatables.min.js') }}" defer></script>
