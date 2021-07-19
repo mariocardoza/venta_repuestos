@@ -25,7 +25,7 @@ class UserController extends Controller
 
     public function create(Request $reques)
     {
-        $roles = Role::all();
+        $roles = Role::whereIn('id',[2,3])->get();
         return view('users.create',compact('roles'));
     }
 
@@ -55,7 +55,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user=User::find($id);
-        $roles = Role::all();
+        $roles = Role::whereIn('id',[2,3])->get();
         return view('users.edit',compact('user','roles'));
 
     }
