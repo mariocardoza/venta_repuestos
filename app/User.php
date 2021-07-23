@@ -48,4 +48,12 @@ class User extends Authenticatable
     {
        $this->notify(new CustomResetPasswordNotification($token));
     }
+
+    public function authorizeRoles($rol)
+    {
+      if ($rol==1 || $rol==2) {
+        return true;
+      }
+      abort(403, 'Esta acción no está autorizada.');
+    }
 }

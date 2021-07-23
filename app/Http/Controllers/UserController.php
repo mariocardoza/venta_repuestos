@@ -12,6 +12,7 @@ class UserController extends Controller
 {
 
     public function index(Request $request){
+        Auth()->user()->authorizeRoles(Auth()->user()->role_id);
         if ($request->has('keyword')){
           $users = User::where('fullname', 'LIKE', "%{$request->keyword}%")
             ->orWhere('email', 'LIKE', "%{$request->keyword}%")

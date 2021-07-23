@@ -9,6 +9,7 @@ class LogController extends Controller
 {
     public function index()
     {
+        Auth()->user()->authorizeRoles(Auth()->user()->role_id);
         $logs = ActivityLog::all();
         return view('logs.index',compact('logs'));
     }

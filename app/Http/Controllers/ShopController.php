@@ -11,6 +11,7 @@ class ShopController extends Controller
 {
     
     public function index(){
+        Auth()->user()->authorizeRoles(Auth()->user()->role_id);
         $shop = Configuration::first();
         $percentages = Percentage::all();
         return view('shop.index',compact('shop','percentages'));
