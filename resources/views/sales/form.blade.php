@@ -10,6 +10,9 @@
               @foreach($customers as $c)
                 <option value="{{$c->id}}">{{ $c->name }}</option>
               @endforeach
+              @if($c == "")
+                $c = "0";
+              @endif
           </select>
         </div>
         <div class="col-md-3 col-6">

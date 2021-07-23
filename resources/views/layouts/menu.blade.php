@@ -46,23 +46,9 @@
 @endif
 
 <li class="nav-item">
-    <a href="{{ route('categories.index') }}" class="nav-link {{ Request::routeIs('categories.*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-check-square"></i>
-        <p>Marcas</p>
-    </a>
-</li>
-
-<li class="nav-item">
-    <a href="{{ route('subcategories.index') }}" class="nav-link {{ Request::routeIs('subcategories.*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-check-circle"></i>
-        <p>Modelos</p>
-    </a>
-</li>
-
-<li class="nav-item">
-    <a href="{{ route('customers.index') }}" class="nav-link {{ Request::routeIs('customers.*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-users"></i>
-        <p>Clientes</p>
+    <a href="{{ route('sales.create') }}" class="nav-link {{ Request::routeIs('sales.create') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-shopping-bag"></i>
+        <p>Nueva Venta</p>
     </a>
 </li>
 
@@ -74,9 +60,23 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('sales.create') }}" class="nav-link {{ Request::routeIs('sales.create') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-shopping-bag"></i>
-        <p>Nueva Venta</p>
+    <a href="{{ route('categories.index') }}" class="nav-link {{ Request::routeIs('categories.*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-car"></i>
+        <p>Marcas de Autos</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('subcategories.index') }}" class="nav-link {{ Request::routeIs('subcategories.*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-truck-monster"></i>
+        <p>Modelos de Autos</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('customers.index') }}" class="nav-link {{ Request::routeIs('customers.*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-users"></i>
+        <p>Clientes</p>
     </a>
 </li>
 

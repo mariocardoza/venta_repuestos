@@ -5,7 +5,7 @@
       <div class="form-group row">
         <div class="col-12">
           <label>Nombre</label>
-          <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ empty($subcategory) ? old('name') : $subcategory->name }}" placeholder="Nombre" title="Submarca">
+          <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ empty($subcategory) ? old('name') : $subcategory->name }}" placeholder="Ej: Corolla" title="Submarca">
           @error('name')
             <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
           @enderror

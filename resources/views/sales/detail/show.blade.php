@@ -8,7 +8,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('dashboard')}}">Inicio</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('sales.index')}}">Compras</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('sales.index')}}">Ventas</a></li>
             </ol>
           </div>
         </div>
@@ -20,14 +20,14 @@
             <div class="col-8">
                 <div class="card card-secondary">
                     <div class="card-header">
-                        <h3 class="card-title">Ventas</h3>
+                        <h3 class="card-title">Información del Cliente</h3>
                     </div>
                     <form method="POST" action="{{ route('sales.update', $sale->id) }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         @method('PATCH')
                         <table class="table">
                           <tr>
-                            <th>Cliente</th>
+                            <th>Nombre</th>
                             <td>{{ $sale->customer->name }}</td>
                           </tr>
                         </table>
