@@ -31,7 +31,7 @@
       </div>
       <div class="form-group row">
         <div class="col-md-12">
-          <label for="">Marca</label>
+          <label for="">Marca del automóvil</label>
           <select class="form-control" name="category_id" id="category_id">
             <option value="">Ninguna</option>
             @foreach($categories as $category)
@@ -49,7 +49,7 @@
       </div>
       <div class="form-group row">
         <div class="col-md-12">
-          <label for="">Modelo</label>
+          <label for="">Modelo del automóvil</label>
           <select class="form-control" name="subcategory_id" id="subcategory_id">
             <option value="">Ninguna</option>
           </select>
@@ -61,7 +61,7 @@
       <div class="form-group row">
         <div class="col-md-12">
           <label for="">Número de motor</label>
-          <input id="engine_number" type="text" class="form-control @error('engine_number') is-invalid @enderror" name="engine_number" value="{{ empty($product) ? old('engine_number') : $product->engine_number }}" placeholder="$0.00" title="Precio">
+          <input id="engine_number" type="text" class="form-control @error('engine_number') is-invalid @enderror" name="engine_number" value="{{ empty($product) ? old('engine_number') : $product->engine_number }}" placeholder="N°" title="Precio">
           @error('engine_number')
             <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
           @enderror

@@ -57,7 +57,8 @@
                                 <th class="table-secondary">Cantidad</th>
                                 <th class="table-secondary">Total</th>
                                 <th class="table-secondary">Acciones</th>
-                            </trsecondary                        </thead>
+                            </trsecondary>                       
+                        </thead>
                         <tbody>
                             @foreach($purchase->detail as $index => $detail)
                                 <tr>

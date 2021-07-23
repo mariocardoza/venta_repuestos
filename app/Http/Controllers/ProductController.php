@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
+use App\Subcategory;
 use Storage;
 
 class ProductController extends Controller
@@ -101,7 +102,7 @@ class ProductController extends Controller
         ]);
         $product = Product::find($id);
         $product->name = $request->name;
-        if($request->code != "")
+        if($request->code != "" && $product->code != $request->code)
         {
             $this->validate($request,['code'=>'unique:products']);
         }
@@ -126,6 +127,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
+        //dd($id);
         $product->delete();
         return array(1,"exito",$product);
     }

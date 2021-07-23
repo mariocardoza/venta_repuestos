@@ -1,34 +1,57 @@
-@extends('layouts.app') 
-@section('content')
-<div style="width: 100%;">
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="box box-primary">
-        <div class="box-header with-border">
-          <h3 class="box-title">Datos de Compras</h3>
-        </div>
-        <form action="#" id="formulario" name="formulario">
-          <div class="box-body">
-            <div class="form-group col-sm-7">
-              <label for="supplier">Proveedor</label>
-                <h4>{{ $purchase->supplier }}</h4> 
-            </div>
-            <div class="form-group col-sm-4">
-              <label for="supplier">N° de Factura</label>
-                <h4>{{ $purchase->bill_number }}</h5>                  
-            </div>
-            <div class="form-group col-sm-1">
-                <button
-                  type="submit"
-                  style="position: absolute; top: 20px;"
-                  class="btn btn-info">
-                  Guardar
-                </button>                  
-            </div>
+@extends('layouts.app')
+@section('cabecera')
+    <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            
           </div>
-        </form>
-      </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ route('dashboard')}}">Inicio</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('purchases.index')}}">Compras</a></li>
+            </ol>
+          </div>
+        </div>
+    </div><!-- /.container-fluid -->
+@endsection
+@section('content')
+    <div class="container-fluid">
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <h3 class="text-center">Productos Adquiridos</h3>
+            </div>
+            <div class="col-md-10">
+                <br>
+                <br>
+                <div class="card table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="table-secondary">N°</th>
+                                <th class="table-secondary">Código</th>
+                                <th class="table-secondary">Producto</th>
+                                <th class="table-secondary">Precio</th>
+                                <th class="table-secondary">Cantidad</th>
+                                <th class="table-secondary">Total</th>
+                            </trsecondary>
+                            </thead>
+                        <tbody>
+                            @foreach($purchase->detail as $index => $detail)
+                                <tr>
+                                    <td>{{$index+1}}</td>
+                                    <td>{{$detail->product->code}}</td>
+                                    <td>{{$detail->product->name}}</td>
+                                    <td>${{$detail->price}}</td>
+                                    <td>{{$detail->quantity}}</td>
+                                    <td>${{$detail->quantity*$detail->price}}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <a class="btn btn-warning float-center" title="Editar" href="{{ route('purchases.edit', $purchase->id) }}">Editar Compra</a>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-@endsection 
+@endsection

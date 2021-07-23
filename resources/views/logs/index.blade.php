@@ -30,9 +30,7 @@
                                         <th class="text-center table-secondary">#</th>
                                         <th class="text-center table-secondary">Acción</th>
                                         <th class="text-center table-secondary">Url</th>
-                                        <th class="text-center table-secondary">Ip</th>
                                         <th class="text-center table-secondary">Usuario</th>
-                                        <th class="text-center table-secondary">Método</th>
                                         <th class="text-center table-secondary">Fecha actividad</th>
                                     </tr>
                                 </thead>
@@ -42,9 +40,7 @@
                                             <td>{{ $i+1 }}</td>
                                             <td class="text-center">{{ $log->subject }}</td>
                                             <td class="text-center">{{ $log->url }}</td>
-                                            <td class="text-center">{{ $log->ip }}</td>
                                             <td class="text-center">{{ $log->user->name }}</td>
-                                            <td class="text-center">{{ $log->method }}</td>
                                             <td class="text-center">{{ date('d-m-Y H:i:s', strtotime($log->created_at)) }}</td>
                                         </tr>
                                     @endforeach

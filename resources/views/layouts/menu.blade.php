@@ -54,7 +54,7 @@
 
 <li class="nav-item">
     <a href="{{ route('subcategories.index') }}" class="nav-link {{ Request::routeIs('subcategories.*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-check-square"></i>
+        <i class="nav-icon fas fa-check-circle"></i>
         <p>Modelos</p>
     </a>
 </li>
@@ -68,7 +68,7 @@
 
 <li class="nav-item">
     <a href="{{ route('sales.index') }}" class="nav-link {{ Request::routeIs('sales.index') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-shopping-bag"></i>
+        <i class="nav-icon fas fa-file-invoice-dollar"></i>
         <p>Ventas realizadas</p>
     </a>
 </li>

@@ -54,7 +54,11 @@
                                             <td class="text-center">
                                                 <div class="btn-group">
                                                     <a class="btn" title="Editar" href="{{ route('products.edit', $product->id) }}"><i class="fas fa-edit"></i></a>
-                                                    <button type="button" id="del-product" data-id="{{ $product->id }}" title="Eliminar" class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
+                                                    <form method="POST" action="{{ route('products.destroy', $product->id) }}">
+                                                      @csrf
+                                                      @method('DELETE')
+                                                      <button type="submit" title="Eliminar" onclick="return confirm('¿Desea eliminar el registro?')" class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>

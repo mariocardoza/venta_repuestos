@@ -40,7 +40,7 @@ class PurchaseController extends Controller
         $request->validate([
             'supplier' => 'required|max:200',
             'date' => 'required',
-            'bill_number' => 'required',
+            //'bill_number' => 'required',
         ]);
         $purchase = new Purchase();
         $purchase->supplier = $request->supplier;
@@ -91,6 +91,7 @@ class PurchaseController extends Controller
         ]);
         $purchase = Purchase::find($id);
         $purchase->supplier = $request->supplier;
+        $purchase->bill_number = $request->bill_number;
         $purchase->total = $request->total;
         $purchase->save();
         return redirect()->route('purchases.index');

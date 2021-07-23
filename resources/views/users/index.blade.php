@@ -30,8 +30,8 @@
                                 <thead>
                                     <tr>
                                       <th class="table-secondary">Nombre completo</th>
-                                      <th class="table-secondary">Correo electrónico</th>
                                       <th class="table-secondary">Nombre de usuario</th>
+                                      <th class="table-secondary">Correo electrónico</th>
                                       <th class="table-secondary">Teléfono</th>
                                       <th class="table-secondary">Rol</th>
                                       <th class="table-secondary">Acciones</th>

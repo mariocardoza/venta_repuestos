@@ -34,9 +34,10 @@ class UserController extends Controller
         $request->validate([
           'name' => 'required|max:100',
           'role_id' => 'required|max:100',
-          'username' => 'required|max:100|unique',
+          'username' => 'required|max:100|unique:users',
           //'birthday' => 'required|max:100',
           'email' => 'required|unique:users|max:192',
+          'phone' => 'required',
           'password' => 'required|confirmed|string|min:8',
 
         ]);
@@ -44,6 +45,7 @@ class UserController extends Controller
         $user=new User();
         $user->name=$request->name;
         $user->email=$request->email;
+        $user->phone=$request->phone;
         $user->username=$request->username;
         $user->role_id = $request->role_id;
         $user->password=Hash::make($request->password);
@@ -84,7 +86,7 @@ class UserController extends Controller
             $this->validate($request,['username'=> 'required|unique:users']);
         }
         if($request->filled('password')):
-                $this->validate($request,['password'=> 'confirmed|min:7|string']);
+                $this->validate($request,['password'=> 'confirmed|min:8|string']);
             $user->password=Hash::make($request->password);
         endif;
         $user->email = $request->email;
@@ -92,6 +94,7 @@ class UserController extends Controller
         $user->dui = $request->dui;
         $user->nit = $request->nit;
         $user->phone = $request->phone;
+        $user->role_id = $request->role_id;
         $user->save();
         return redirect()->route('users.index')->with('success', 'Usuario actualizado satisfactoriamente.');
     }
