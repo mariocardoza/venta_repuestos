@@ -68,7 +68,7 @@
                     </table>
                 </div>
                 <div class="text-center">
-                    <a href="{{ url("/admin/sales/pdf/".$sale->id) }}" title="Imprimir venta" class="btn btn-info btn-accept" id="">Imprimir</a>
+                    <a target="_blank" href="{{ url("/admin/sales/pdf/".$sale->id) }}" title="Imprimir venta" class="btn btn-info btn-accept" id="">Imprimir</a>
                 </div>
             </div>
         </div>
