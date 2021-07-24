@@ -45,11 +45,6 @@
                                             <div class="btn-group">
                                                 <a class="btn" title="Ver" href="{{ route('sales.show', $sale->id) }}"><i class="fas fa-eye"></i></a>
                                                 <!--a class="btn" title="Editar" href="{{ route('sales.edit', $sale->id) }}"><i class="fas fa-edit"></i></a-->
-                                                <form method="POST" action="{{ route('sales.destroy', $sale->id) }}">
-                                                  @csrf
-                                                  @method('DELETE')
-                                                  <button type="submit" title="Eliminar" onclick="return confirm('¿Desea eliminar el proyecto?')" class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
-                                                </form>
                                             </div>
                                         </td>
                                     </tr>
