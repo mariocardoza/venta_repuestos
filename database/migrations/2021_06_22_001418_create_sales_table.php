@@ -26,7 +26,7 @@ class CreateSalesTable extends Migration
             $table->UnsignedBigInteger('user_id')->nullable();
             $table->integer('correlative');
             $table->UnsignedBigInteger('receipt_id');
-            $table->foreign('customer_id')->references('id')->on('customers');
+            //$table->foreign('customer_id')->references('id')->on('customers');
             $table->timestamps();
         });
     }

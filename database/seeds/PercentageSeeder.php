@@ -14,9 +14,9 @@ class PercentageSeeder extends Seeder
     {
         if (Percentage::all()->count() < 1){
             $por= new Percentage();
-            $por->nombre='Renta';
-            $por->nombre_simple='renta';
-            $por->porcentaje=10;
+            $por->nombre='Ganancia';
+            $por->nombre_simple='ganancia';
+            $por->porcentaje=0;
             $por->save();
 
             $por= new Percentage();

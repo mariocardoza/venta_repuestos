@@ -6,13 +6,10 @@
           <label for="">Cliente</label>
           <input type="hidden" name="sale_id" id="sale_id" value="0">
           <select name="customer_id" id="customer_id" class="form-control">
-            <option value="">Seleccione un Cliente</option>
+            <option value="0">Seleccione un Cliente</option>
               @foreach($customers as $c)
                 <option value="{{$c->id}}">{{ $c->name }}</option>
               @endforeach
-              @if($c == "")
-                $c = "0";
-              @endif
           </select>
         </div>
         <div class="col-md-3 col-6">

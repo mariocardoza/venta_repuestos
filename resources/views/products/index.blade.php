@@ -54,11 +54,9 @@
                                             <td class="text-center">
                                                 <div class="btn-group">
                                                     <a class="btn" title="Editar" href="{{ route('products.edit', $product->id) }}"><i class="fas fa-edit"></i></a>
-                                                    <form method="POST" action="{{ route('products.destroy', $product->id) }}">
-                                                      @csrf
-                                                      @method('DELETE')
-                                                      <button type="submit" title="Eliminar" onclick="return confirm('¿Desea eliminar el registro?')" class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
-                                                    </form>
+                                                    
+                                                      <button data-id="{{$product->id}}" type="button" title="Eliminar" class="btn btn-delete del-product"><i class="fas fa-trash-alt"></i></button>
+                                                   
                                                 </div>
                                             </td>
                                         </tr>
@@ -109,7 +107,7 @@
 <script>
     $(function(){
         //eliminar producto
-        $(document).on("click","#del-product",function(e){
+        $(document).on("click",".del-product",function(e){
             e.preventDefault();
             let id = $(this).attr('data-id');
             //let confirmed = confirm("¿Desea eliminar el producto?");
@@ -143,7 +141,7 @@
               swal.closeModal();
               if(json[0]==1){
                 
-                if(json[2]==1){
+                if(json[2]!=3){
                   toastr.success("Usuario correcto");
                   $("#modal_autizacion").modal("hide");
                   $("#form_autorizacion").trigger("reset");

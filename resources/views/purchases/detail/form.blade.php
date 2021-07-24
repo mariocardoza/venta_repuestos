@@ -22,7 +22,7 @@
         </div>
         <div class="col-md-6">
           <label for="">Cantidad</label>
-          <input type="text" class="form-control  @error('quantity') is-invalid @enderror" name="quantity" id="quantity" value="{{ empty($purchase_detail) ? old('quantity') : $purchase_detail->quantity }}">
+          <input type="text" class="form-control  @error('quantity') is-invalid @enderror" name="quantity" id="quantity" value="{{ empty($purchase_detail) ? old('quantity') : $purchase_detail->quantity }}" autocomplete="off">
            @error('quantity')
             <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
           @enderror
@@ -31,7 +31,7 @@
       <div class="form-group row">
         <div class="col-md-6">
           <label for="">Precio</label>
-          <input id="price" type="number" step="any" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ empty($purchase_detail) ? old('price') : $purchase_detail->price }}" placeholder="$0.00" title="Total">
+          <input id="price" type="number" step="any" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ empty($purchase_detail) ? old('price') : $purchase_detail->price }}" placeholder="$0.00" title="Total" autocomplete="off">
           @error('price')
             <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
           @enderror

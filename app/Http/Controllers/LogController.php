@@ -10,7 +10,7 @@ class LogController extends Controller
     public function index()
     {
         Auth()->user()->authorizeRoles(Auth()->user()->role_id);
-        $logs = ActivityLog::all();
+        $logs = ActivityLog::orderBy('created_at','desc')->get();
         return view('logs.index',compact('logs'));
     }
 }

@@ -48,6 +48,7 @@ class SaleController extends Controller
         $sale = Sale::find($request->sale_id);
         try{
             $sale->state = 1;
+            $sale->user_id = auth()->user()->id;
             foreach($sale->detail as $detail){
                 $this->update_inventory($detail,$sale->id);
             }

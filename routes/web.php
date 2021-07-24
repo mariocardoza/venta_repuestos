@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware('auth')->prefix('admin')->group(function() {
   // ROUTES FOR ADMIN DASHBOARD
     //rutas para autorizaciones del administrador
-  Route::Post('autorizacion', 'Homecontroller@autorizacion');
+  Route::Post('autorizacion', 'HomeController@autorizacion');
   Route::get('', 'DashboardController@redirectDashboard');
   Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
   Route::resource('users','UserController');

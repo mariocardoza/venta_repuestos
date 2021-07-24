@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Purchase;
+use App\ProductDetail;
 use Storage;
 
 class PurchaseController extends Controller
@@ -105,6 +106,12 @@ class PurchaseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $purchase = Purchase::find($id);
+        $hasSale = ProductDetail::where('purchase_id',$purchase->id)->where('state',0)->count();
+        if($hasSale>0){
+            return redirect()->route('purchases.index')->with('error','No se puede eliminar, ya tiene venta registrada');
+        }
+        $purchase->delete();
+        return redirect()->route('purchases.index')->with('success','Venta eliminada con éxito');
     }
 }

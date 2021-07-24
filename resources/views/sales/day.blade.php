@@ -52,7 +52,7 @@
                             <tbody>
                                 @foreach($sales as $sale)
                                     <tr>
-                                        <td>{{$sale->customer->name}}</td>
+                                        <td>{{$sale->customer_id != 0 ? $sale->customer->name : 'Sin cliente registrado'}}</td>
                                         <td>{{$sale->sale_date->format('d/m/Y')}}</td>
                                         <td>${{number_format($sale->total,2)}}</td>
                                         <td class="text-center">

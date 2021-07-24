@@ -74,13 +74,13 @@ padding-right : 5px;
 			<td>FECHA: {{$c->created_at->format("d/m/Y")}}</td>
 		</tr>
 		<tr>
-			<td>Cliente: {{$c->customer->name}}</td>
+			<td>Cliente: {{ $c->customer_id!=0 ? $c->customer->name : 'Sin cliente registrado'}}</td>
 		</tr>
 		<tr>
-			<td>Teléfono: {{$c->customer->phone}}</td>
+			<td>Teléfono: {{ $c->customer_id!=0 ? $c->customer->phone: ''}}</td>
 		</tr>
 		<tr>
-			<td>Correo electrónico: {{$c->customer->email}}</td>
+			<td>Correo electrónico: {{ $c->customer_id!=0 ? $c->customer->email: ''}}</td>
 		</tr>
 	</table>
 	<table class="tablita" width="100%" style="background: #F0E9EA">

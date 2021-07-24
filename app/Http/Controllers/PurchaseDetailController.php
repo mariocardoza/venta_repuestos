@@ -7,6 +7,8 @@ use App\Purchase;
 use App\PurchaseDetail;
 use App\ProductDetail;
 use App\Product;
+use App\Percentage;
+use App\Rules\ValidPurchase;
 use Storage;
 
 class PurchaseDetailController extends Controller
@@ -43,10 +45,13 @@ class PurchaseDetailController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'product_id' => 'required',
+            'purchase_id' => 'required',
             'quantity' => 'required|numeric|min:1',
             'price' => 'required|numeric',
+            'product_id' => ['required', new ValidPurchase($request->purchase_id)],
         ]);
+        $ganancia = Percentage::retornar_porcentaje('ganancia');
+        //dd($ganancia);
         $purchase = new PurchaseDetail();
         $purchase->product_id = $request->product_id;
         $purchase->quantity = $request->quantity;
@@ -54,6 +59,11 @@ class PurchaseDetailController extends Controller
         $purchase->price = $request->price;
         $purchase->save();
         $purchase->purchase->total = $purchase->purchase->total+($request->price*$request->quantity);
+        $product = Product::find($request->product_id);
+        $laganancia = (($product->price+$purchase->price)/2) * $ganancia;
+        $product->price = (($product->price+$purchase->price)/2) + $laganancia;
+        $product->price;
+        $product->save();
         $purchase->purchase->save();
         $this->update_inventory($request);
         return redirect()->route('purchases.edit',$purchase->purchase_id)->with('success','Ítem registrado satisfactoriamente');
@@ -101,6 +111,10 @@ class PurchaseDetailController extends Controller
             'price' => 'required|numeric',
         ]);
         $detail = PurchaseDetail::find($id);
+        $hasSale = ProductDetail::where('purchase_id',$detail->purchase_id)->where('product_id',$detail->product_id)->where('state',0)->count();
+        if($hasSale>0){
+            return redirect()->route('purchases.edit',$detail->purchase_id)->with('error','No se puede editar, ya tiene venta registrada');
+        }
         $total = $detail->price*$detail->quantity;
         $inventory = ProductDetail::where('purchase_id',$detail->purchase_id)->where('product_id',$detail->product_id)->delete();
         $detail->product_id = $request->product_id;
@@ -125,6 +139,10 @@ class PurchaseDetailController extends Controller
     public function destroy($id)
     {
         $detail = PurchaseDetail::find($id);
+        $hasSale = ProductDetail::where('purchase_id',$detail->purchase_id)->where('state',0)->count();
+        if($hasSale>0){
+            return redirect()->route('purchases.edit',$detail->purchase_id)->with('error','No se puede eliminar, ya tiene venta registrada');
+        }
         $purchase_id = $detail->purchase_id;
         $inventory = ProductDetail::where('purchase_id',$detail->purchase_id)->where('product_id',$detail->product_id)->delete();
         $total = $detail->price*$detail->quantity;
