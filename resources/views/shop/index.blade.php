@@ -59,7 +59,7 @@
                             <input type="text" class="form-control" name="shop_name" value="{{$shop->shop_name}}">
                           </div>
                           <div class="col-md-6">
-                            <label for="" class="control-label">Razon social</label>
+                            <label for="" class="control-label">Giro del negocio</label>
                             <input type="text" class="form-control" name="business_name" value="{{$shop->business_name}}">
                           </div>
                         </div>

@@ -28,10 +28,9 @@
                         <table class="table">
                           <tr>
                             <th>Nombre</th>
-                            <td>{{ $sale->customer->name }}</td>
+                            <td>{{ $sale->customer_id != 0 ? $sale->customer->name : "Sin cliente registrado" }}</td>
                           </tr>
                         </table>
-                        <br>
                     </form>
                 </div>
             </div>
@@ -42,7 +41,6 @@
                 <h3 class="text-center">Productos vendidos</h3>
             </div>
             <div class="col-md-10">
-                <br>
                 <br>
                 <div class="card table-responsive">
                     <table class="table">
@@ -68,6 +66,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                </div>
+                <div class="text-center">
+                    <a href="{{ url("/admin/sales/pdf/".$sale->id) }}" title="Imprimir venta" class="btn btn-info btn-accept" id="">Imprimir</a>
                 </div>
             </div>
         </div>

@@ -65,7 +65,7 @@
   text-align:left;direction:ltr;vertical-align: top; font-family: "Courier New"; font-size: 14pt; border: 0px none; padding: 0px; margin: 0px;font-weight: bold;color:#000000;background-color:transparent;overflow:hidden; position: absolute;
    }   
     .FRX1_27{
-  text-align:right;direction:ltr;vertical-align: top; font-family: "Courier New"; font-size: 12pt; border: 0px none; padding: 0px; margin: 0px;font-weight: bold;color:#000000;background-color:transparent;overflow:hidden; position: absolute;
+  text-align:left;direction:ltr;vertical-align: top; font-family: "Courier New"; font-size: 12pt; border: 0px none; padding: 0px; margin: 0px;font-weight: bold;color:#000000;background-color:transparent;overflow:hidden; position: absolute;
    }   
     .FRX1_28{
   text-align:left;direction:ltr;vertical-align: top; font-family: "Arial"; font-size: 10pt; border: 0px none; padding: 0px; margin: 0px;font-weight: bold;color:#000000;background-color:transparent;overflow:hidden; position: absolute;
@@ -83,8 +83,11 @@
   text-align:left;direction:ltr;vertical-align: top; font-family: "Calibri"; font-size: 10pt; border: 0px none; padding: 0px; margin: 0px;font-weight: bold;color:#000000;background-color:transparent;overflow:hidden; position: absolute;
    }   
     .FRX1_33{
-  text-align:left;direction:ltr;vertical-align: top; font-family: "Calibri"; font-size: 20pt; border: 0px none; padding: 0px; margin: 0px;font-weight: bold;color:#000000;background-color:transparent;overflow:hidden; position: absolute;
-   }   
+  font-family: "Calibri"; font-size: 20pt;
+   } 
+   .FRX1_331{
+  font-family: "Calibri"; font-size: 10pt; position: absolute;
+   }  
     .FRX1_34{
   text-align:left;direction:ltr;vertical-align: top; font-family: "Calibri"; font-size: 20pt; border: 0px none; padding: 0px; margin: 0px;font-weight: bold;color:#000000;background-color:transparent;overflow:hidden; position: absolute;
    }   
@@ -137,28 +140,58 @@
   text-align:left;direction:ltr;vertical-align: top; font-family: "Calibri"; font-size: 11pt; border: 0px none; padding: 0px; margin: 0px;font-weight: normal;color:#000000;background-color:transparent;overflow:hidden; position: absolute;
    }   
     --></style></head><body><div><div style=" width:100%;top:0in;position:absolute; "><div class="FRX1_12" style="z-Index:1;left:6.15833in;
-top:1.95000in;width:1.27083in;height:0.17708in;"></div><div class="FRX1_13" style="z-Index:2;left:0.73125in;
-top:2.41875in;width:4.05208in;height:0.40625in;">{{$sale->customer->name}}</div><div class="FRX1_14" style="z-Index:3;left:6.12292in;
-top:2.86667in;width:1.38542in;height:0.17708in;">  {{$sale->sale_date->format('d/m/Y')}}</div>
-<div class="FRX1_15" style="z-Index:4;left:0.93125in;top:2.87708in;width:3.65625in;height:0.30208in;"></div><div class="FRX1_16" style="z-Index:5;left:1.27292in;
-top:3.16875in;width:1.86458in;height:0.15625in;"></div><div class="FRX1_25" style="z-Index:10;left:0.73125in;
-top:2.25208in;width:3.50000in;height:0.16667in;">NOMBRE DEL CLIENTE</div><div class="FRX1_26" style="z-Index:11;left:5.32500in;
-top:0.85625in;width:1.37500in;height:0.22917in;">Venta #</div><div class="FRX1_27" style="z-Index:12;left:6.25208in;
-top:0.88750in;width:1.22917in;height:0.19792in;">      {{$sale->correlative}}</div><div class="FRX1_32" style="z-Index:17;left:5.53333in;
-top:2.84583in;width:0.80625in;height:0.15625in;">FECHA:</div>
-<div class="FRX1_33" style="z-Index:18;left:1.00208in;top:0.11667in;width:3in;height:0.81250in;">{{datos_negocio()->shop_name}}</div>
-<div class="FRX1_35" style="z-Index:20;left:0.73125in;
-top:1.22083in;width:4.13125in;height:0.19792in;">Venta de repuestos</div><div class="FRX1_36" style="z-Index:21;left:0.73125in;
-top:1.47083in;width:5.23958in;height:0.69792in;">{{datos_negocio()->address}}</div><div class="correo" style="z-Index:22;left:0.73125in;
-top:2.0458in;width:3.09042in;height:0.23542in;">CORREO:{{datos_negocio()->email}}</div><div class="FRX1_41" style="z-Index:23;left:0.73125in;
-top:3.16875in;width:4.66083in;height:0.14583in;">N I T: {{$sale->customer->nit}}</div><div class="FRX1_46" style="z-Index:28;left:0.73125in;
-top:1.85042in;width:4.26042in;height:0.19792in;">TELS.: {{datos_negocio()->phone}}, {{datos_negocio()->phone2}} </div>
+top:1.95000in;width:1.27083in;height:0.17708in;"></div>
+
+
+<div class="FRX1_15" style="z-Index:4;left:0.93125in;top:2.87708in;width:3.65625in;height:0.30208in;"></div>
+
+<div class="FRX1_16" style="z-Index:5;left:1.27292in;
+top:3.16875in;width:1.86458in;height:0.15625in;"></div>
+
+<div class="FRX1_33" style="text-align: center" >{{datos_negocio()->shop_name}}</div>
+
+<div style="text-align: center">{{datos_negocio()->business_name}}</div>
+
+<div style="text-align: center">N° de Registro: {{datos_negocio()->nrc}}</div>
+
+<div style="text-align: center">NIT: {{datos_negocio()->nit}}</div>
+
+<div style="text-align: center">Venta # {{$sale->correlative}}</div>
+
+<div style="text-align: left;left:0.5in;position: absolute;top: 1.12in" >Dirección: {{datos_negocio()->address}}</div>
+
+<div style="text-align: left;left:0.5in;position: absolute;top: 1.32in" >Correo Electrónico: {{datos_negocio()->email}}</div>
+
+<div style="text-align: right;right:0.5in;position: absolute;" >Teléfonos: {!!datos_negocio()->phone."<br>".datos_negocio()->phone2!!}</div>
+
+
+<div class="FRX1_46" style="left:0.9in;top:1.9in;">Cliente: {{ $sale->customer_id != 0 ? $sale->customer->name : " "}} </div>
+
+<div class="FRX1_46" style="left:0.9in;top:2.1in;">Dirección: {{ $sale->customer_id != 0 ? $sale->customer->address : " "}}</div>
+
+<div class="FRX1_46" style="left:0.9in;top:2.3in;">Teléfono: {{ $sale->customer_id != 0 ? $sale->customer->phone : " "}}</div>
+
+<div class="FRX1_46" style="left:0.9in;top:2.5in;">DUI: {{ $sale->customer_id != 0 ? $sale->customer->dui : " "}}</div>
+
+<div class="FRX1_46" style="right:0.9in;top:1.9in;">NIT: {{ $sale->customer_id != 0 ? $sale->customer->nit : " "}}</div>
+
+<div class="FRX1_46" style="right:0.9in;top:2.1in;">NRC: {{ $sale->customer_id != 0 ? $sale->customer->nrc : " "}}</div>
+
+<div class="FRX1_46" style="right:0.9in;top:2.3in;">Fecha de venta: {{ $sale->sale_date->format('d/m/Y')}}</div>
+
+
+
 
 <div class="FRX1_24" style="z-Index:3;left:0.31250in;top:3.9in;width:0.42708in;height:0.15625in; font-weight: bold;">    N°</div>
+
 <div class="FRX1_18" style="z-Index:1;left:0.81667in;top:3.9in;width:4.64583in;height:0.15625in; font-weight: bold;">CONCEPTO</div>
+
 <div class="FRX1_19" style="z-Index:2;left:5.56667in;top:3.9in;width:1.86458in;height:0.15625in; font-weight: bold;">       SUBTOTAL</div>
+
 <div class="FRX1_19" style="z-Index:2;left:4.69967in;top:3.9in;width:1.86458in;height:0.15625in; font-weight: bold;">       CANTIDAD</div>
+
 <div class="FRX1_19" style="z-Index:2;left:3.76667in;top:3.9in;width:1.86458in;height:0.15625in; font-weight: bold;">       PRECIO U.</div>
+
 <?php $salto=4.1; $correlativo=1;$total=0; $iva=$sale->iva;?>
 
 <div class="FRX1_18" style="z-Index:1;left:1.51667in;top:{{$salto}}in;width:4.64583in;height:0.15625in;"><b>---- Productos ----</b></div>
