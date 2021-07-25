@@ -42,6 +42,7 @@ class ProductController extends Controller
     {
         $request->validate([
           'name' => 'required|max:200',
+          'price' => 'required',
           'image' => 'nullable|image|max:2048',
         ]);
         $product = new Product();
@@ -98,6 +99,7 @@ class ProductController extends Controller
     {
         $request->validate([
           'name' => 'required|max:200',
+          'price' => 'required',
           'image' => 'nullable|image|max:2048',
         ]);
         $product = Product::find($id);

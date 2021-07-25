@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
           // Usuario tipo emprendedor
           $user1 = User::create([
             'name' => 'Administrador',
-            'email' => 'dya_re@hotmail.com',
+            'email' => 'venta@gmail.com',
             'username' => 'administrador',
             'phone' => '+50372035861',
             'password' => Hash::make('awesome'),
@@ -36,20 +36,15 @@ class UserSeeder extends Seeder
           ]);
 
           // Usuario tipo cliente
-          $user1 = User::create([
+          /*$user1 = User::create([
             'name' => 'Vendedor',
             'email' => 'mario@influenciadigital.net',
             'username' => 'vendedor',
             'phone' => '+50372035819',
             'password' => Hash::make('awesome'),
             'role_id' => 3
-          ]);
+          ]);*/
         }
-      if (Category::all()->count() < 1){
-        $category = Category::create([
-          'name' => 'Categoría por defecto',
-        ]);
-      }
 
       /* datos del negocio */
       if (Configuration::all()->count() < 1){
