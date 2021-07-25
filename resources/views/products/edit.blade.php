@@ -39,3 +39,26 @@
         </div>
     </div>
 @endsection
+@push('page_scripts')
+<script>
+$(function(){
+    $(document).on("change", "#category_id", function(e){
+        e.preventDefault();
+        let id = $(this).val();
+        if(id > 0){
+          $.ajax({
+            url: '/admin/subcategories/list/' + id,
+            type: 'get',
+            dataType: 'json',
+            success: function(json){
+              if(json[0] == 1){
+                $("#subcategory_id").empty();
+                $("#subcategory_id").html(json[2]);
+              }
+            }
+          });
+        }
+    });
+});
+</script>
+@endpush
